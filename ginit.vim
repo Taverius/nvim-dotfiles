@@ -12,13 +12,32 @@ set columns=130
 nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
 nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
 
-if exists("g:neovide")
-    if has('windows')
-        set guifont=Consolas,Cascadia\ Mono,Cascadia\ Mono\ PL:h14
-    else
-        set guifont=Hack,Fira\ Code,Droid\ Sans\ Mono:h14
-    endif
+" Set the font
+if has('windows')
+    " CaskayudiaCove, honestly the cleanest of the lot
+    " set guifont=CaskaydiaCove_NF:h13:W300
+    " Consolas, self-patched with -w -s -c, the extra glyphs are always
+    " a little off
+    " set guifont=Consolas_NF:h14
+    " FantasqueSansMono, hilarious flair and still plenty readable
+    " set guifont=FantasqueSansMono_NF:h14
+    " JetBrainsMono, I find the serifs a bit too square
+    " set guifont=JetBrainsMono_NF:h13:W300
+    " Hasklug, clean with great ligatures
+    " set guifont=Hasklug_NF:h13
+    " Iosevka is a little laterally compressed for my tastes
+    " set guifont=Iosevka:14
+    " VictorMono, cursive lowercase italic! But no ligatures.
+    " set guifont=VictorMono_NF:h13
 
+    " We can fall back onto Cascadia Code and Consolas
+    set guifont=FantasqueSansMono_NF:h14,CaskaydiaCove_NF:h13:W300,Cascadia_Code_PL:h13:W300,Consolas:h14
+else
+    set guifont=Hack,Fira\ Code,Droid\ Sans\ Mono:h14
+endif
+
+
+if exists("g:neovide")
     " Zoom in/out with scale with <Ctrl -> and <Ctrl =>
     let g:neovide_scale_factor=1.0
     function! ChangeScaleFactor(delta)
@@ -28,22 +47,13 @@ if exists("g:neovide")
     nnoremap <expr><C--> ChangeScaleFactor(1/1.25)
 
     " If the mouse is on the window, hide it while typing
-    let g:neovide_hide_mouse_when_typing = v:false
+    let g:neovide_hide_mouse_when_typing = v:true
 
     " Loww refresh rate when idle
     let g:neovide_refresh_rate_idle = 5
 endif
 
 if exists('g:fvim_loaded')
-    " good old 'set guifont' compatibility with HiDPI hints...
-    if g:fvim_os == 'windows'
-        set guifont=Consolas:h16
-    elseif g:fvim_render_scale > 1.0
-        set guifont=Hack:h12
-    else
-        set guifont=Hack:h24
-    endif
-
     nnoremap <A-CR> :FVimToggleFullScreen<CR>
 
     " Fancy cursor
