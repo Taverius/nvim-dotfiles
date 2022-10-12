@@ -13,32 +13,29 @@ nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
 nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
 
 " Set the font
+" CaskayudiaCove, honestly the cleanest of the lot
+" set guifont=CaskaydiaCove_NF:h13:W300
+" Consolas, self-patched with -w -s -c, glyphs are a little off
+" set guifont=Consolas_NF:h14
+" FantasqueSansMono, hilarious flair and still plenty readable
+" set guifont=FantasqueSansMono_NF:h14
+" JetBrainsMono, I find the serifs a bit too square
+" set guifont=JetBrainsMono_NF:h13:W300
+" Hasklug, clean with great ligatures
+" set guifont=Hasklug_NF:h13
+" Iosevka is a little laterally compressed for my tastes
+" set guifont=Iosevka:h14
+" VictorMono, cursive lowercase italic!
+" set guifont=VictorMono_NF:h13
 if has('windows')
-    " CaskayudiaCove, honestly the cleanest of the lot
-    " set guifont=CaskaydiaCove_NF:h13:W300
-    " Consolas, self-patched with -w -s -c, the extra glyphs are always
-    " a little off
-    " set guifont=Consolas_NF:h14
-    " FantasqueSansMono, hilarious flair and still plenty readable
-    " set guifont=FantasqueSansMono_NF:h14
-    " JetBrainsMono, I find the serifs a bit too square
-    " set guifont=JetBrainsMono_NF:h13:W300
-    " Hasklug, clean with great ligatures
-    " set guifont=Hasklug_NF:h13
-    " Iosevka is a little laterally compressed for my tastes
-    " set guifont=Iosevka:14
-    " VictorMono, cursive lowercase italic! But no ligatures.
-    " set guifont=VictorMono_NF:h13
-
     " We can fall back onto Cascadia Code and Consolas
-    set guifont=FantasqueSansMono_NF:h14,CaskaydiaCove_NF:h13:W300,Cascadia_Code_PL:h13:W300,Consolas:h14
+    set guifont=VictorMono_NF:h13,FantasqueSansMono_NF:h14,CaskaydiaCove_NF:h13:W300,Cascadia_Code_PL:h13:W300,Consolas:h14
 else
     set guifont=Hack,Fira\ Code,Droid\ Sans\ Mono:h14
 endif
 
-
 if exists("g:neovide")
-    " Zoom in/out with scale with <Ctrl -> and <Ctrl =>
+    " Zoom in/out with scale with [Ctrl -] and [Ctrl =]
     let g:neovide_scale_factor=1.0
     function! ChangeScaleFactor(delta)
         let g:neovide_scale_factor = g:neovide_scale_factor * a:delta
