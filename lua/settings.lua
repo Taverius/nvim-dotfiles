@@ -5,7 +5,6 @@ local stdconfig = vim.fn.stdpath('config') .. "/vim/settings"
 
 -- If we're on windows, check if powershell is available
 if vim.fn.has('windows') == 1 and ( vim.fn.executable('pwsh') == 1 or vim.fn.executable('powershell') == 1 ) then
-    -- vim.cmd([[let &shell = executable('pwsh') ? 'pwsh' : 'powershell']])
     vim.o.shell = ( vim.fn.executable('pwsh') == 1 ) and 'pwsh' or 'powershell'
     vim.o.shellcmdflag = [[-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;]]
     vim.o.shellredir = [[2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode]]
