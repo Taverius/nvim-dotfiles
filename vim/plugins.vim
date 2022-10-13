@@ -31,7 +31,7 @@ endfunction
 Plug 'junegunn/vim-plug'
 
 " YARP
-Plug 'roxma/nvim-yarp', Cond(has('python3'), { 'do': 'python -m pip install --user --upgrade pynvim' })
+Plug 'roxma/nvim-yarp', Cond(has('python3'), { 'do': 'python -m pip install --upgrade wheel pynvim neovim-remote virtualenv' })
 
 " Vim-Matchup
 Plug 'andymass/vim-matchup'

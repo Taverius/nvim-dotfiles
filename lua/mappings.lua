@@ -30,7 +30,7 @@ map('i', "<C-c>", "<ESC>")
 map('n', 'Q', "@q", {desc = 'Replay macro'})
 
 -- Shift-Enter -> ESC
-map({'n', 'v', 'o'}, "<S-cr>", "<Esc>")
+map({'n', 'v', 'o'}, "<S-CR>", "<Esc>")
 
 -- \ clears the search pattern
 map('n', [[\]], ":noh<CR>", {silent = true, desc = 'Clear search highlight'})
