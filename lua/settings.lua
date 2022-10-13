@@ -85,7 +85,7 @@ opt.completeopt:append { "menuone", "longest" }
                                             -- Also show the menu when there is only one option,
                                             -- and only insert the longest common text
 opt.wildmode:prepend { "longest:full" }     -- Complete to longest common string first
-opt.shada = { "!", "'1000", "<1000", "s250", "h", "f1", "%" }
+opt.shada = { "!", "'1000", "<1000", "f1", "h", "s250" }
                                             -- My Big Fat Shada File
 opt.concealcursor = "nc"                    -- Conceal cursor line text also in mormal mode and
                                             -- incsearch
@@ -110,26 +110,48 @@ titlestring = titlestring .. [[\ -\ %{substitute(getcwd(),\ $HOME,\ '~',\ '')}]]
                                             -- Working directory
 opt.titlestring = titlestring
 
-
--- Don't screw up folds when inserting text that might affect them, until
--- leaving insert mode. Foldmethod is local to the window. Protect against
--- screwing up folding when switching between windows.
--- cmd.source(stdconfig .. "/foldinsert.vim")
+-- Don't screw up folds when inserting text that might affect folds, until leaving insert mode.
+-- Foldmethod is local to the window. Protect against screwing up folding when switching between
+-- windows.
 local nviFoldInsert = augroup("nviFoldInsert", {})
 autocmd("InsertEnter", {
         group = nviFoldInsert,
-        command = "if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif"
+        callback = function()
+            if vim.w.last_fdm == nil then
+                vim.w.last_fdm = vim.w.foldmethod
+                vim.w.foldmethod = "manual"
+            end
+        end
     })
 autocmd({ "InsertLeave", "WinLeave" }, {
         group = nviFoldInsert,
-        command = "if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif"
+        callback = function()
+            if not vim.w.last_fdm == nil then
+                vim.w.foldmethod = vim.w.last_fdm
+                vim.w.last_fdm = nil
+            end
+        end
     })
 
 -- Terminal color checks
 cmd.source(stdconfig .. "/termcolor.vim")
 
 -- Toggle cursor line/column highlight only for the active window
-cmd.source(stdconfig .. "/cursorhl.vim")
+local nviCursorHighlight = augroup("nviCursorHighlight", {})
+autocmd("WinLeave", {
+        group = nviCursorHighlight,
+        callback = function()
+            vim.opt_local.cursorline = false
+            vim.opt_local.cursorcolumn = false
+        end
+    })
+autocmd("WinEnter", {
+        group = nviCursorHighlight,
+        callback = function()
+            vim.opt_local.cursorline = true
+            vim.opt_local.cursorcolumn = true
+        end
+    })
 
 -- Generic function to check if a buffer is backed by a file
 cmd.source(stdconfig .. "/bufhasfile.vim")
@@ -139,9 +161,6 @@ cmd.source(stdconfig .. "/undofile.vim")
 
 -- View file automation
 cmd.source(stdconfig .. "/viewfile.vim")
-
--- When NVim loses focus, save
--- vim.cmd.source(stdconfig .. "/savefocus.vim")
 
 -- CTags
 if fn.has("win32") == 1 or fn.has("win64") == 1 then
