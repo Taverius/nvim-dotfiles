@@ -2,6 +2,12 @@
 -- lua/settings.lua @ Leonardo Valeri Manera 2022
 
 local stdconfig = vim.fn.stdpath('config') .. "/vim/settings"
+local opt = vim.opt
+local g = vim.g
+local fn = vim.fn
+local cmd = vim.cmd
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
 
 -- -- If we're on windows, check if powershell is available
 -- if vim.fn.has('windows') == 1 and ( vim.fn.executable('pwsh') == 1 or vim.fn.executable('powershell') == 1 ) then
@@ -21,6 +27,10 @@ vim.g.loaded_node_provider = 0
 -- Set Python 3 binary
 if vim.fn.executable('C:/Dev/Python/3/python.exe') == 1 then
     vim.g.python3_host_prog = 'C:/Dev/Python/3/python.exe'
+end
+
+if fn.has('windows') then
+    autocmd("UIEnter", { command = "cd ~", once = true })
 end
 
 -- NetRW is naughty
