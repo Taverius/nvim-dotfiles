@@ -12,5 +12,5 @@ require("onedarkpro").setup({ dark_theme = "onedark", })
 vim.g.catppuccin_flavour = "frappe"
 -- lighthaus
 
-vim.cmd.colorscheme('melange')
+vim.cmd.colorscheme('gruvbox')
 
