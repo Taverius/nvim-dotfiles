@@ -12,33 +12,24 @@ set columns=130
 nnoremap <silent> <C-ScrollWheelUp> :set guifont=+<CR>
 nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
 
-" Set the font
-function! SetGuifont()
-    " CaskayudiaCove, honestly the cleanest of the lot
-    " set guifont=CaskaydiaCove_NF:h13:W300
-    " Consolas, self-patched with -w -s -c, glyphs are a little off
-    " set guifont=Consolas_NF:h14
-    " FantasqueSansMono, hilarious flair and still plenty readable
-    " set guifont=FantasqueSansMono_NF:h14
-    " JetBrainsMono, I find the serifs a bit too square
-    " set guifont=JetBrainsMono_NF:h13:W300
-    " Hasklug, clean with great ligatures
-    " set guifont=Hasklug_NF:h13
-    " Iosevka is a little laterally compressed for my tastes
-    " set guifont=Iosevka:h14
-    " VictorMono, cursive lowercase italic!
-    " set guifont=VictorMono_NF:h13
-    if has('windows')
-        " We can fall back onto Cascadia Code and Consolas
-        set guifont=VictorMono_NF:h13,FantasqueSansMono_NF:h14,CaskaydiaCove_NF:h13:W300,Cascadia_Code_PL:h13:W300,Consolas:h14
-    else
-        set guifont=Hack,Fira\ Code,Droid\ Sans\ Mono:h14
-    endif
-endfunction
+" CaskaydiaCove, honestly the cleanest of the lot
+" set guifont=CaskaydiaCove_NF:h13:W300
+" Consolas, self-patched with -w -s -c, glyphs are a little off
+" set guifont=Consolas_NF:h14
+" FantasqueSansMono, hilarious flair and still plenty readable
+" set guifont=FantasqueSansMono_NF:h14
+" JetBrainsMono, I find the serifs a bit too square
+" set guifont=JetBrainsMono_NF:h13:W300
+" Hasklug, clean with great ligatures
+" set guifont=Hasklug_NF:h13
+" Iosevka is a little laterally compressed for my tastes
+" set guifont=Iosevka:h14
+" VictorMono, cursive lowercase italic!
+" set guifont=VictorMono_NF:h13
 
 if exists("g:neovide")
     " We're in Neovide
-    call SetGuifont()
+    set guifont=VictorMono_NF:h12
 
     " Zoom in/out with scale with [Ctrl -] and [Ctrl =]
     let g:neovide_scale_factor=1.0
@@ -58,13 +49,16 @@ if exists("g:neovide")
     let g:neovide_refresh_rate_idle = 5
 elseif exists('g:fvim_loaded')
     " We're in FVim
-    call SetGuifont()
+    set guifont=VictorMono\ NF:h16
 
     nnoremap <A-CR> :FVimToggleFullScreen<CR>
 
     " Fancy cursor
     FVimCursorSmoothMove v:true
     FVimCursorSmoothBlink v:true
+
+    " Title bar tweaks
+    FVimCustomTitleBar v:true
 
     " Font stuff
     FVimFontAntialias v:true
@@ -73,12 +67,19 @@ elseif exists('g:fvim_loaded')
     FVimFontLigature v:true
     FVimFontSubpixel v:true
 
+    " Disable built-in NerfFont glyphs
+    FVimFontNoBuiltinSymbols v:true
+
     " Automatic input method engagement in Insert mode
     FVimKeyAutoIme v:true
 
     " Don't use the UI Popups
     FVimUIPopupMenu v:false
     FVimUIWildMenu v:false
+
+    " Default options (workspace-agnostic)
+    FVimDefaultWindowWidth 1300
+    FVimDefaultWindowHeight 1400
 elseif exists('g:goneovim')
     " We're in Goneovim
 else
