@@ -108,19 +108,19 @@ map({ 'n', 'v', 'o', 'i' }, "<F4>",
         cmd.setlocal("spell!")
         print(cmd.setlocal("spell?"))
     end,
-    { silent = true, desc = 'Toggle spell' })
+    { desc = 'Toggle spell' })
 map({ 'n', 'v', 'o', 'i' }, "<C-F4>",
     function()
         opt_local.spelllang = fn.get(g.my_lang_codes, g.MY_LANG_IDX)
         g.MY_LANG_IDX = ( g.MY_LANG_IDX + 1 < vim.tbl_count(g.my_lang_codes) ) and g.MY_LANG_IDX + 1 or 0
         print(vim.o.spelllang)
     end,
-    { silent = true, desc = 'Change spelling language' })
+    { desc = 'Change spelling language' })
 
 -- <leader>syn -> show syntax group under cursor
 map({ 'n', 'v', 'o' }, "<Leader>syn",
     function()
         print(vim.api.nvim_eval([[join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), '/')]]))
     end,
-    { silent = true, desc = 'Show syntax group under cursor' })
+    { desc = 'Show syntax group under cursor' })
 
