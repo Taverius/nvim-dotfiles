@@ -101,7 +101,6 @@ opt.foldlevelstart = 99                     -- Start with all folds open
 opt.foldcolumn = "2"                        -- Always display a 2-character fold column
 opt.cursorline = true                       -- Always show cursor line
 opt.cursorcolumn = true                     -- Always show cursor column
-opt.undofile = true                         -- Undo files please
 opt.tags:prepend(fn.fnamemodify(fn.stdpath('state'), [[:p:gs?\?/?]]) .. 'tags')
                                             -- Set a default tags file in 'state'
 opt.viewoptions:remove { "curdir" }         -- Don't save $CWD in the view file
@@ -174,13 +173,62 @@ autocmd("WinEnter", {
 })
 
 -- Generic function to check if a buffer is backed by a file
-cmd.source(stdconfig .. "/bufhasfile.vim")
+local buffer_has_file_check = function()
+    if vim.api.nvim_eval([[&buftype =~? 'nofile']]) == 1 then
+        return false
+    elseif fn.empty(fn.glob(fn.expand([[%:p]]))) == 1 then
+        return false
+    else
+        return true
+    end
+end
 
 -- Undo file automation
-cmd.source(stdconfig .. "/undofile.vim")
+local nviUndoFile = augroup("nviUndoFile", {})
+autocmd({ "BufWritePost", "BufWinEnter" }, {
+    group = nviUndoFile,
+    pattern = "?*",
+    callback = function()
+        if buffer_has_file_check() then
+            vim.opt_local.undofile = true
+        end
+    end
+})
 
 -- View file automation
-cmd.source(stdconfig .. "/viewfile.vim")
+g.skipview_files = {}
+local buffer_make_view_check = function()
+    if buffer_has_file_check() then
+        return false
+    elseif fn.len("$TEMP") and fn.expand("%:p:h") == vim.env.TEMP then
+        return false
+    elseif fn.len("$TMP") and fn.expand("%:p:h") == vim.env.TMP then
+        return false
+    elseif fn.index(g.skipview_files, fn.expand("%"), 0, 1) >= 0 then
+        return false
+    else
+        return true
+    end
+end
+local nviAutoView = augroup("nviAutoView", {})
+autocmd({ "BufWritePost", "BufLeave", "WinLeave", "FocusLost" }, {
+    group = nviAutoView,
+    pattern = "?*",
+    callback = function()
+        if buffer_make_view_check() then
+            cmd("silent! mkview")
+        end
+    end
+})
+autocmd("BufWinEnter", {
+    group = nviAutoView,
+    pattern = "?*",
+    callback = function()
+        if buffer_make_view_check() then
+            cmd("silent! loadview")
+        end
+    end
+})
 
 -- CTags
 if fn.has("windows") == 1 then
