@@ -103,14 +103,13 @@ opt.cursorline = true                       -- Always show cursor line
 opt.cursorcolumn = true                     -- Always show cursor column
 opt.undofile = true                         -- Undo files please
 opt.tags:prepend(fn.fnamemodify(fn.stdpath('state'), [[:p:gs?\?/?]]) .. 'tags')
-                                            -- Set the default tags file in 'state'
+                                            -- Set a default tags file in 'state'
 opt.viewoptions:remove { "curdir" }         -- Don't save $CWD in the view file
-local titlestring = [[%f\]] .. [[%h%m%r%w]] -- File name & flags
-titlestring = titlestring .. [[\ -\ %{substitute(expand(v:progname),\ '\.exe',\ '',\ '')}]]
+opt.titlestring = [[%f\]] .. [[%h%m%r%w]] -- File name & flags
+opt.titlestring = opt.titlestring:get() .. [[\ -\ %{substitute(expand(v:progname),\ '\.exe',\ '',\ '')}]]
                                             -- Program name
-titlestring = titlestring .. [[\ -\ %{substitute(getcwd(),\ $HOME,\ '~',\ '')}]]
+opt.titlestring = opt.titlestring:get() .. [[\ -\ %{substitute(getcwd(),\ $HOME,\ '~',\ '')}]]
                                             -- Working directory
-opt.titlestring = titlestring
 
 -- Don't screw up folds when inserting text that might affect folds, until leaving insert mode.
 -- Foldmethod is local to the window. Protect against screwing up folding when switching between
@@ -136,7 +135,26 @@ autocmd({ "InsertLeave", "WinLeave" }, {
     })
 
 -- Terminal color checks
-cmd.source(stdconfig .. "/termcolor.vim")
+autocmd("UIEnter", {
+    callback = function()
+        if vim.api.nvim_eval([[$TERM =~ '^\(rxvt\|screen\|interix\|putty\|win32con\)\(-.*\)\?$']]) == 1 then
+            opt.termguicolors = false
+        elseif vim.api.nvim_eval([[$TERM =~ '^\(tmux\|iterm\|vte\|gnome\|vtpcon\|conemu\)\(-.*\)\?$']]) == 1 then
+            opt.termguicolors = true
+        elseif vim.api.nvim_eval([[$TERM =~ '^\(xterm\)\(-.*\)\?$']]) == 1 then
+            if vim.api.nvim_eval([[$XTERM_VERSION != '']]) == 1 then
+                opt.termguicolors = true
+            elseif vim.api.nvim_eval([[$KONSOLE_PROFILE_NAME != '']]) == 1 then
+                opt.termguicolors = true
+            elseif vim.api.nvim_eval([[$VTE_VERSION != '']]) == 1 then
+                opt.termguicolors = true
+            else
+                opt.termguicolors = false
+            end
+        end
+    end,
+    once = true
+    })
 
 -- Toggle cursor line/column highlight only for the active window
 local nviCursorHighlight = augroup("nviCursorHighlight", {})
