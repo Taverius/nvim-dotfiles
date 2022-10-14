@@ -51,7 +51,7 @@ map('v', 'v', [[<ESC>`<v`>]])
 -- Remove the ^M when the encoding gets messed up
 map({ 'n', 'v', 'o' }, "<leader>M",
     [[mmHmt:%s/<C-V><CR>//ge<CR>'tzt'm]],
-    { desc = 'Clear ^M from wrong encoding' })
+    { silent = true, desc = 'Clear ^M from wrong encoding' })
 
 -- Allows you to stay in visual mode when indenting with < and >
 map('v', '>', '>gv')
@@ -66,7 +66,7 @@ map('n', "<C-]>", 'g<C-]>')
 map('n', "<C-g>", 'g<C-g>')
 
 -- Quickfix
-map({ 'n', 'v', 'o' }, "<leader>cc", [[:cclose<bar>lclose<CR>]], { desc = 'Close Quikckfix' })
+map({ 'n', 'v', 'o' }, "<leader>cc", [[:cclose<bar>lclose<CR>]], { silent = true, desc = 'Close Quikckfix' })
 local nviQfClose = augroup("nviQfClose", {})
 autocmd("FileType", {
         group = nviQfClose,
