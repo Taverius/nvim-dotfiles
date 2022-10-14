@@ -105,7 +105,7 @@ opt.undofile = true                         -- Undo files please
 opt.tags:prepend(fn.fnamemodify(fn.stdpath('state'), [[:p:gs?\?/?]]) .. 'tags')
                                             -- Set a default tags file in 'state'
 opt.viewoptions:remove { "curdir" }         -- Don't save $CWD in the view file
-opt.titlestring = [[%f\]] .. [[%h%m%r%w]] -- File name & flags
+opt.titlestring = [[%f\]] .. [[%h%m%r%w]]   -- File name & flags
 opt.titlestring = opt.titlestring:get() .. [[\ -\ %{substitute(expand(v:progname),\ '\.exe',\ '',\ '')}]]
                                             -- Program name
 opt.titlestring = opt.titlestring:get() .. [[\ -\ %{substitute(getcwd(),\ $HOME,\ '~',\ '')}]]
@@ -116,23 +116,23 @@ opt.titlestring = opt.titlestring:get() .. [[\ -\ %{substitute(getcwd(),\ $HOME,
 -- windows.
 local nviFoldInsert = augroup("nviFoldInsert", {})
 autocmd("InsertEnter", {
-        group = nviFoldInsert,
-        callback = function()
-            if vim.w.last_fdm == nil then
-                vim.w.last_fdm = vim.w.foldmethod
-                vim.w.foldmethod = "manual"
-            end
+    group = nviFoldInsert,
+    callback = function()
+        if vim.w.last_fdm == nil then
+            vim.w.last_fdm = vim.w.foldmethod
+            vim.w.foldmethod = "manual"
         end
-    })
+    end
+})
 autocmd({ "InsertLeave", "WinLeave" }, {
-        group = nviFoldInsert,
-        callback = function()
-            if not vim.w.last_fdm == nil then
-                vim.w.foldmethod = vim.w.last_fdm
-                vim.w.last_fdm = nil
-            end
+    group = nviFoldInsert,
+    callback = function()
+        if not vim.w.last_fdm == nil then
+            vim.w.foldmethod = vim.w.last_fdm
+            vim.w.last_fdm = nil
         end
-    })
+    end
+})
 
 -- Terminal color checks
 autocmd("UIEnter", {
@@ -154,24 +154,24 @@ autocmd("UIEnter", {
         end
     end,
     once = true
-    })
+})
 
 -- Toggle cursor line/column highlight only for the active window
 local nviCursorHighlight = augroup("nviCursorHighlight", {})
 autocmd("WinLeave", {
-        group = nviCursorHighlight,
-        callback = function()
-            vim.opt_local.cursorline = false
-            vim.opt_local.cursorcolumn = false
-        end
-    })
+    group = nviCursorHighlight,
+    callback = function()
+        vim.opt_local.cursorline = false
+        vim.opt_local.cursorcolumn = false
+    end
+})
 autocmd("WinEnter", {
-        group = nviCursorHighlight,
-        callback = function()
-            vim.opt_local.cursorline = true
-            vim.opt_local.cursorcolumn = true
-        end
-    })
+    group = nviCursorHighlight,
+    callback = function()
+        vim.opt_local.cursorline = true
+        vim.opt_local.cursorcolumn = true
+    end
+})
 
 -- Generic function to check if a buffer is backed by a file
 cmd.source(stdconfig .. "/bufhasfile.vim")
