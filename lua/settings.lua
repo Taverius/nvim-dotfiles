@@ -102,6 +102,8 @@ opt.foldcolumn = "2"                        -- Always display a 2-character fold
 opt.cursorline = true                       -- Always show cursor line
 opt.cursorcolumn = true                     -- Always show cursor column
 opt.undofile = true                         -- Undo files please
+opt.tags:prepend(fn.fnamemodify(fn.stdpath('state'), [[:p:gs?\?/?]]) .. 'tags')
+                                            -- Set the default tags file in 'state'
 opt.viewoptions:remove { "curdir" }         -- Don't save $CWD in the view file
 local titlestring = [[%f\]] .. [[%h%m%r%w]] -- File name & flags
 titlestring = titlestring .. [[\ -\ %{substitute(expand(v:progname),\ '\.exe',\ '',\ '')}]]
