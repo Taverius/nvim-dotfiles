@@ -28,7 +28,7 @@ map('i', "<C-Space>",
     { silent = true, desc = 'Toggle fold under cursor' })
 
 -- Let Control-S be 'save' as it is in most other editors
-map({ 'n', 'v', 'o', 'i' }, "<C-s>", function() cmd.w() end)
+map({ 'n', 'v', 'o', 'i' }, "<C-s>", cmd.w)
 
 -- Map Crlt-C directly to ESC
 map('i', "<C-c>", "<ESC>")
@@ -40,8 +40,8 @@ map('n', 'Q', "@q", { desc = 'Replay macro' })
 map({ 'n', 'v', 'o' }, "<S-CR>", "<Esc>")
 
 -- \ clears the search pattern
-map('n', [[\]], ":noh<CR>",
-    { silent = true, desc = 'Clear search highlight' })
+map('n', [[\]], cmd.noh,
+    { desc = 'Clear search highlight' })
 
 -- Pressing an 'enter visual mode' key while in visual mode changes mode.
 map('v', "<C-V>", [[<ESC>`<<C-v>`>]])
@@ -49,8 +49,7 @@ map('v', 'V', [[<ESC>`<V`>]])
 map('v', 'v', [[<ESC>`<v`>]])
 
 -- Remove the ^M when the encoding gets messed up
-map({ 'n', 'v', 'o' }, "<leader>M",
-    [[mmHmt:%s/<C-V><CR>//ge<CR>'tzt'm]],
+map({ 'n', 'v', 'o' }, "<leader>M", [[mmHmt:%s/<C-V><CR>//ge<CR>'tzt'm]],
     { silent = true, desc = 'Clear ^M from wrong encoding' })
 
 -- Allows you to stay in visual mode when indenting with < and >
@@ -66,15 +65,19 @@ map('n', "<C-]>", 'g<C-]>')
 map('n', "<C-g>", 'g<C-g>')
 
 -- Quickfix
-map({ 'n', 'v', 'o' }, "<leader>cc", [[:cclose<bar>lclose<CR>]], { silent = true, desc = 'Close Quikckfix' })
+local QfClose = function()
+    cmd.cclose()
+    cmd.lclose()
+end
+map({ 'n', 'v', 'o' }, "<leader>cc", QfClose, { desc = 'Close Quikckfix' })
 local nviQfClose = augroup("nviQfClose", {})
 autocmd("FileType", {
         group = nviQfClose,
         pattern = "qf",
         callback = function()
             if vim.api.nvim_eval("mapcheck('<esc>', 'n') ==# ''") then
-                map('n', "<esc>", [[:cclose<bar>lclose<CR>]], {
-                    buffer = true, silent = true, desc = 'Close Quikckfix' })
+                map('n', "<esc>", QfClose, {
+                    buffer = true, desc = 'Close Quikckfix' })
             end
         end
     })
@@ -86,7 +89,7 @@ map('n', "<S-tab>", "<C-w>W", { desc = 'Counter-clockwise window' })
 -- Tab configuration
 map('n', "<leader>tn", ":tabnew %<CR>", { desc = 'New tab' })
 map('n', "<leader>te", ":tabedit", { desc = 'Edit tab' })
-map('n', "<leader>tc", ":tabclose<CR>", { desc = 'Close tab' })
+map('n', "<leader>tc", cmd.tabclose, { desc = 'Close tab' })
 map('n', "<leader>tm", ":tabmove", { desc = 'Move tab' })
 
 -- F2 -> Toggle list
