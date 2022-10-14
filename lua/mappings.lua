@@ -2,8 +2,14 @@
 -- lua/mappings.lua @ Leonardo Valeri Manera 2022
 
 local stdconfig = vim.fn.stdpath('config') .. "/vim/mappings"
+local opt = vim.opt
+local opt_local = vim.opt_local
+local g = vim.g
+local fn = vim.fn
 local cmd = vim.cmd
 local map = vim.keymap.set
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
 
 -- , is mapleader, so rebind ,, to ,
 map({'n', 'v'}, ',,', ',', {silent = true})
@@ -57,7 +63,17 @@ map('n', "<C-g>", 'g<C-g>')
 
 -- Quickfix
 map({'n', 'v', 'o'}, "<leader>cc", [[:cclose<bar>lclose<CR>]], {desc = 'Close Quikckfix'})
-cmd.source(stdconfig .. "/qfclose.vim")
+local nviQfClose = augroup("nviQfClose", {})
+autocmd("FileType", {
+        group = nviQfClose,
+        pattern = "qf",
+        callback = function()
+            if vim.api.nvim_eval("mapcheck('<esc>', 'n') ==# ''") then
+                map('n', "<esc>", ":cclose<bar>lclose<CR>", {
+                    buffer = true, silent = true, desc = 'Close Quikckfix' })
+            end
+        end
+    })
 
 -- Circular window navigation
 map('n', "<tab>", "<C-w>w", { desc = 'Clockwise window'})
@@ -74,13 +90,29 @@ map({'n', 'v', 'o'}, "<F2>", [[:set list!<CR>:set list?<CR>]], {desc = 'Toggle l
 map('i', "<F2>", [[<C-o>:set list!<CR><C-O>:set list?<CR>]], {desc = 'Toggle list'})
 
 -- Spelling
-cmd.source(stdconfig .. "/myspelllang.vim")
-map({'n', 'v', 'o'}, "<F4>", [[:setlocal spell!<CR>]], {silent = true, desc = 'Toggle spell'})
-map('i', "<F4>", [[<C-o>:setlocal spell!<CR>]], {silent = true, desc = 'Toggle spell'})
-map({'n', 'v', 'o'}, "<C-F4>", [[:call NViMySpellLang()<CR>]], {silent = true, desc = 'Rotate spelling language'})
-map('i', "<C-F4>", [[<C-o>:call NViMySpellLang()<CR>]], {silent = true, desc = 'Rotate spelling language'})
+g.my_lang_codes = { 'en_gb', 'it', 'en_gb,it' }
+if g.MY_LANG_IDX == nil or g.MY_LANG_IDX + 1 < vim.tbl_count(g.my_lang_codes) then
+    g.MY_LANG_IDX = 0
+end
+
+map({'n', 'v', 'o', 'i'}, "<F4>",
+    function()
+        vim.cmd("setlocal spell!")
+        print(vim.o.spell and 'spell' or 'nospell')
+    end,
+    { silent = true, desc = 'Toggle spell' })
+map({'n', 'v', 'o', 'i'}, "<C-F4>",
+    function()
+        opt_local.spelllang = fn.get(g.my_lang_codes, g.MY_LANG_IDX)
+        g.MY_LANG_IDX = ( g.MY_LANG_IDX + 1 < vim.tbl_count(g.my_lang_codes) ) and g.MY_LANG_IDX + 1 or 0
+        print(vim.o.spelllang)
+    end,
+    { silent = true, desc = 'Change spelling language' })
 
 -- <leader>syn -> show syntax group under cursor
-cmd.source(stdconfig .. "/syntaxitem.vim")
-map({'n', 'v', 'o'}, "<Leader>syn", [[:echo NViSyntaxItem()<CR>]], {silent = true, desc = 'Show syntax group under cursor'})
+map({'n', 'v', 'o'}, "<Leader>syn",
+    function()
+        print(vim.api.nvim_eval([[join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), '/')]]))
+    end,
+    { silent = true, desc = 'Show syntax group under cursor' })
 
