@@ -15,6 +15,7 @@ require("colorscheme")
 -- plugin configurations
 vim.cmd("packadd! starsector-ft.vim")
 require("plugins.vim-plug")
+require("plugins.nvim-treesitter")
 require("plugins.vim-matchup")
 require("plugins.alpha-nvim")
 require("plugins.auto-save")

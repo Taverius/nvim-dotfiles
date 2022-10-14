@@ -165,7 +165,7 @@ cmd.source(stdconfig .. "/undofile.vim")
 cmd.source(stdconfig .. "/viewfile.vim")
 
 -- CTags
-if fn.has("win32") == 1 or fn.has("win64") == 1 then
+if fn.has("windows") == 1 then
     if fn.executable("ctags") == 1 then
         g.ctags_location = "ctags"
     else
@@ -174,10 +174,6 @@ if fn.has("win32") == 1 or fn.has("win64") == 1 then
 else
     if fn.executable("ctags-universal") == 1 then
         g.ctags_location = "ctags-universal"
-    elseif vim.fn.executable("ctags-exuberant") == 1 then
-        g.ctags_location = "ctags-exuberant"
-    elseif vim.fn.executable("exctags") == 1 then
-        g.ctags_location = "exctags"
     else
         g.ctags_location = "ctags"
     end

@@ -30,6 +30,10 @@ endfunction
 " For Help
 Plug 'junegunn/vim-plug'
 
+" Treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+
 " YARP
 Plug 'roxma/nvim-yarp', Cond(has('python3'), { 'do': 'python -m pip install --upgrade wheel pynvim neovim-remote virtualenv' })
 
