@@ -2,6 +2,25 @@
 -- lua/nvim-treesitter.lua @ Leonardo Valeri Manera 2022
 
 require('nvim-treesitter.configs').setup {
+    ensure_installed = {
+        "bash",
+        "cmake",
+        "comment",
+        "css",
+        "gitattributes",
+        "help",
+        "html",
+        "lua",
+        "make",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "regex",
+        "toml",
+        "vim",
+        "yaml",
+    },
+    auto_install = true,
     highlight = {
         enable = true,
     },
