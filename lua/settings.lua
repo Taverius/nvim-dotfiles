@@ -126,7 +126,7 @@ autocmd("InsertEnter", {
 autocmd({ "InsertLeave", "WinLeave" }, {
     group = nviFoldInsert,
     callback = function()
-        if not vim.w.last_fdm == nil then
+        if vim.w.last_fdm ~= nil then
             vim.w.foldmethod = vim.w.last_fdm
             vim.w.last_fdm = nil
         end
