@@ -10,6 +10,7 @@ require('nvim-treesitter.configs').setup {
         "gitattributes",
         "help",
         "html",
+        "json",
         "lua",
         "make",
         "markdown",
@@ -20,7 +21,6 @@ require('nvim-treesitter.configs').setup {
         "vim",
         "yaml",
     },
-    auto_install = true,
     highlight = {
         enable = true,
     },
