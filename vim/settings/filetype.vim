@@ -3,13 +3,16 @@
 
 " Python
 function! DeleteTrailingWS()
-    exe "normal mz"
-    %s/\s\+$//ge
-    exe "normal `z"
+    if !&binary && &filetype != 'diff'
+        let l:save = winsaveview()
+        keeppatterns %s/\s\+$//e
+        call winrestview(l:save)
+    endif
 endfunction
 augroup nviPython
     autocmd!
-    autocmd BufWrite *.py :call DeleteTrailingWS()
+    autocmd BufWritePre,FileWritePre,FileAppendPre,FilterWritePre *.py :call DeleteTrailingWS()
+    autocmd FileType python autocmd BufWritePre <buffer> :call DeleteTrailingWS()
 augroup END
 
 " VimL
