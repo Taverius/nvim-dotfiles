@@ -82,6 +82,8 @@ endif
 Plug 'LukasPietzschmann/telescope-tabs'
 Plug 'smartpde/telescope-recent-files'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
+Plug 'fcying/telescope-ctags-outline.nvim'
+Plug 'kelly-lin/telescope-ag', Cond(executable('ag'))
 
 " Bindings help
 Plug 'folke/which-key.nvim'
@@ -115,6 +117,7 @@ Plug 'gbprod/yanky.nvim'
 Plug 'ms-jpq/coq_nvim', Cond(has('python3'), {'commit': '84ec5faf2aaf49819e626f64dd94f4e71cf575bc'})
 Plug 'ms-jpq/coq.artifacts', Cond(has('python3'), {'branch': 'artifacts'})
 Plug 'ms-jpq/coq.thirdparty', Cond(has('python3'), {'branch': '3p'})
+Plug 'fannheyward/telescope-coc.nvim', Cond(has('python3'))
 
 " AsynComplete (VimL)
 Plug 'prabirshrestha/asyncomplete.vim', Cond(!has('python3'))

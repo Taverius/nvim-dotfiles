@@ -35,3 +35,18 @@ require("telescope").load_extension("file_browser")
 -- Vim-Bookmarks extension
 require('telescope').load_extension('vim_bookmarks')
 
+-- Ctags
+if vim.fn.executable(vim.g.ctags_location) then
+    require('telescope').load_extension('ctags_outline')
+end
+
+-- Ag
+if vim.fn.executable('ag') then
+    require('telescope').load_extension("ag")
+end
+
+-- Coq
+if vim.fn.has('python3') then
+    require('telescope').load_extension('coc')
+end
+
