@@ -67,7 +67,6 @@ Plug 'inkarkat/vim-ingo-library'
 Plug 'inkarkat/vim-visualrepeat'
 
 " Shougo utilities
-Plug 'Shougo/context_filetype.vim'
 Plug 'Shougo/echodoc.vim'
 
 " Telescope
