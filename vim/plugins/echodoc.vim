@@ -2,7 +2,7 @@
 " vim/plugins/echodoc.vim @ (c) Leonardo Valeri Manera 2022
 
 let g:echodoc#enable_at_startup = 1
-let g:echodoc#type = 'popup'
+let g:echodoc#type = 'floating'
 
 augroup vimrcEchodocHighlight
     autocmd!
