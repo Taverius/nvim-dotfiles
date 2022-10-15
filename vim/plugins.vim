@@ -124,8 +124,7 @@ Plug 'prabirshrestha/asyncomplete-file.vim', Cond(!has('python3'))
 Plug 'yami-beta/asyncomplete-omni.vim', Cond(!has('python3'))
 
 " Tags
-Plug 'ludovicchabant/vim-gutentags', {'on': []}
-Plug 'Taverius/vim-gutentags', {'as': 'my-gutentags'}
+Plug 'skywind3000/vim-gutentags', {'on': []}
 
 " Statusline
 Plug 'nvim-lualine/lualine.nvim'

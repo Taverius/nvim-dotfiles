@@ -14,6 +14,7 @@ require("colorscheme")
 
 -- plugin configurations
 vim.cmd("packadd! starsector-ft.vim")
+vim.cmd("packadd! my-gutentags.vim")
 require("plugins.vim-plug")
 require("plugins.nvim-treesitter")
 require("plugins.vim-matchup")
