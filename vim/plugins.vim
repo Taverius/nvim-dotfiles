@@ -1,4 +1,4 @@
-"   vi: foldmethod=marker tw=100
+"   vi: tw=100
 " plug.vim @ (c) Leonardo Valeri Manera 2022
 
 " Install vim-plug if not found
@@ -116,7 +116,7 @@ Plug 'ms-jpq/coq_nvim', Cond(has('python3'), {'commit': '84ec5faf2aaf49819e626f6
 Plug 'ms-jpq/coq.artifacts', Cond(has('python3'), {'branch': 'artifacts'})
 Plug 'ms-jpq/coq.thirdparty', Cond(has('python3'), {'branch': '3p'})
 
-" " AsynComplete (VimL)
+" AsynComplete (VimL)
 Plug 'prabirshrestha/asyncomplete.vim', Cond(!has('python3'))
 Plug 'prabirshrestha/asyncomplete-buffer.vim', Cond(!has('python3'))
 Plug 'prabirshrestha/asyncomplete-tags.vim', Cond(!has('python3'))
