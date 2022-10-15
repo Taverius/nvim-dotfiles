@@ -1,5 +1,5 @@
-"   vi: foldmethod=marker tw=100
-" plugins/fern.vim @ (c) Leonardo Valeri Manera 2022
+"   vi: tw=100
+" vim/plugins/fern.vim @ (c) Leonardo Valeri Manera 2022
 
 function! s:init_fern() abort
 

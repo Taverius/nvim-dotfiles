@@ -1,5 +1,5 @@
 --   vi: tw=100
--- lua/alpha-nvim.lua @ Leonardo Valeri Manera 2022
+-- lua/plugins/alpha-nvim.lua @ Leonardo Valeri Manera 2022
 
 local home = vim.env.HOME
 

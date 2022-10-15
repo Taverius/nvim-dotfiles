@@ -1,5 +1,5 @@
-"   vi: foldmethod=marker tw=100
-" plugins/echodoc.vim @ (c) Leonardo Valeri Manera 2022
+"   vi: tw=100
+" vim/plugins/echodoc.vim @ (c) Leonardo Valeri Manera 2022
 
 let g:echodoc#enable_at_startup = 1
 let g:echodoc#type = 'popup'

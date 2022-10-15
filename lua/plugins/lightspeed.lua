@@ -1,5 +1,5 @@
 --   vi: tw=100
--- lua/plugins/sneak.lua @ Leonardo Valeri Manera 2022
+-- lua/plugins/lightspeed.lua @ Leonardo Valeri Manera 2022
 
 require'lightspeed'.setup {
     ignore_case = false,

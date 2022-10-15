@@ -1,5 +1,5 @@
 --   vi: tw=100
--- lua/nvim-treesitter.lua @ Leonardo Valeri Manera 2022
+-- lua/plugins/nvim-treesitter.lua @ Leonardo Valeri Manera 2022
 
 require('nvim-treesitter.configs').setup {
     ensure_installed = {

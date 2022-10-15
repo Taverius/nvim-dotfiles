@@ -1,5 +1,5 @@
 "   vi: tw=100
-" fragments/settings/filetype.vim @ (c) Leonardo Valeri Manera 2022
+" vim/settings/filetype.vim @ (c) Leonardo Valeri Manera 2022
 
 " Python
 function! DeleteTrailingWS()

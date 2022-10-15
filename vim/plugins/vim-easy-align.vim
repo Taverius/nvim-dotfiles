@@ -1,5 +1,5 @@
-"   vi: foldmethod=marker tw=100
-" plugins/vim-easy-align.vim @ (c) Leonardo Valeri Manera 2022
+"   vi: tw=100
+" vim/plugins/vim-easy-align.vim @ (c) Leonardo Valeri Manera 2022
 
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 xmap <Silent> ga <Plug>(EasyAlign)

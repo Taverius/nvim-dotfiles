@@ -1,5 +1,5 @@
 "   vi: tw=100
-" plug.vim @ (c) Leonardo Valeri Manera 2022
+" vim/plugins.vim @ (c) Leonardo Valeri Manera 2022
 
 " Install vim-plug if not found
 let data_dir = stdpath('data') . '/site'

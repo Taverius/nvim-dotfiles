@@ -1,5 +1,5 @@
-"   vi: foldmethod=marker tw=100
-" plugins/asyncomplete.vim @ (c) Leonardo Valeri Manera 2022
+"   vi: tw=100
+" vim/plugins/asyncomplete.vim @ (c) Leonardo Valeri Manera 2022
 
 if !has('python3')
     " Maps

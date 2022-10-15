@@ -1,5 +1,5 @@
-"   vi: foldmethod=marker tw=100
-" fragments/settings/trylang.vim @ (c) Leonardo Valeri Manera 2022
+"   vi: tw=100
+" vim/settings/trylang.vim @ (c) Leonardo Valeri Manera 2022
 
 try
     language en
