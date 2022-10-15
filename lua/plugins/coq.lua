@@ -4,6 +4,11 @@
 if vim.fn.has('python3') then
     require("coq") {}
 
+    vim.g.coq_settings = {
+        ["auto_start"] = 'shut-up',
+        ["keymap.manual_complete_insertion_only"] = true
+    }
+
     require("coq_3p") {
         { src = "builtin/ada"     },
         { src = "builtin/c"       },
