@@ -26,17 +26,16 @@ else
     setup {}
 end
 
--- Telescope-Tabs
+-- Tabs
 require('telescope-tabs').setup {}
 
--- Telescope Recent Files
+-- Recent Files
 extension("recent_files")
 
--- To get telescope-file-browser loaded and working with telescope,
--- you need to call load_extension, somewhere after setup function:
+-- File browser
 extension("file_browser")
 
--- Vim-Bookmarks extension
+-- Vim-Bookmarks
 extension("vim_bookmarks")
 
 -- Ctags outline
@@ -47,10 +46,10 @@ if vim.fn.executable('ag') then
     extension("ag")
 end
 
--- Tanky
+-- Yanky
 extension("yank_history")
 
--- binds
+-- Binds
 -- <leader>lp -> Show list of pickers
 map('n', "<leader>lp", builtin.pickers, { desc = "Telescope pickers" })
 -- <leader>lgb -> Grep in current buffer
