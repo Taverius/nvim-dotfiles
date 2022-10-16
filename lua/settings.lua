@@ -178,7 +178,7 @@ local buffer_has_file_check = function()
     if fn.empty(vim.bo.buftype) == 0 then
         -- Special buffer type
         return false
-    elseif vim.tbl_count(g.skipbuffer_filetypes) > 0 vim.tbl_contains(g.skipbuffer_filetypes, vim.bo.filetype) then
+    elseif vim.tbl_count(g.skipbuffer_filetypes) > 0 and vim.tbl_contains(g.skipbuffer_filetypes, vim.bo.filetype) then
         -- Check against filetype list
         return false
     elseif vim.api.nvim_eval("match(expand('%:p'), '[')") >= 0 or vim.api.nvim_eval("match(expand('%:p'), ']')") >= 0 then
