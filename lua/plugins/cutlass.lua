@@ -10,5 +10,5 @@ require("cutlass").setup({
   })
 
 -- The above masks m (create mark) so map that to gm
-vim.keymap.set('n', "gm", "m")
+vim.keymap.set('n', "gm", "m", { desc = "Create Mark" })
 
