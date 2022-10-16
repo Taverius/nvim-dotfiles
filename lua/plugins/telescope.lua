@@ -1,52 +1,55 @@
 --   vi: tw=100
 -- lua/plugins/telescope.lua @ Leonardo Valeri Manera 2022
 
+local map = vim.keymap.set
+
 -- Telescope
-require('telescope').setup {}
+local setup = require('telescope').setup
+local extension = require('telescope').load_extension
+local builtin = require('telescope.builtin')
+setup {}
 
 -- FZF Native
 if vim.fn.executable('cmake') == 1 then
-    require('telescope').setup {
+    setup {
         extensions = {
             fzf = {
-                fuzzy = true,                    -- false will only do exact matching
-                override_generic_sorter = true,  -- override the generic sorter
-                override_file_sorter = true,     -- override the file sorter
-                case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                -- the default case_mode is "smart_case"
+                fuzzy = true,
+                override_generic_sorter = true,
+                override_file_sorter = true,
             }
         }
     }
     -- To get fzf loaded and working with telescope, you need to call
     -- load_extension, somewhere after setup function:
-    require('telescope').load_extension('fzf')
+    extension("fzf")
 end
 
 -- Telescope-Tabs
-require'telescope-tabs'.setup{}
+require('telescope-tabs').setup{}
 
 -- Telescope Recent Files
-require("telescope").load_extension("recent_files")
+extension("recent_files")
 
 -- To get telescope-file-browser loaded and working with telescope,
 -- you need to call load_extension, somewhere after setup function:
-require("telescope").load_extension("file_browser")
+extension("file_browser")
 
 -- Vim-Bookmarks extension
-require('telescope').load_extension('vim_bookmarks')
+extension("vim_bookmarks")
 
 -- Ctags
 if vim.fn.executable(vim.g.ctags_location) then
-    require('telescope').load_extension('ctags_outline')
+    extension("ctags_outline")
 end
 
 -- Ag
 if vim.fn.executable('ag') then
-    require('telescope').load_extension("ag")
+    extension("ag")
 end
 
 -- Coq
 if vim.fn.has('python3') then
-    require('telescope').load_extension('coc')
+    extension("coc")
 end
 
