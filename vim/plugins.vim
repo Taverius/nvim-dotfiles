@@ -76,7 +76,7 @@ if executable('cmake')
 elseif executable('make')
     Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 else
-    Plug 'nvim-telescope/telescope-fzf-native.nvim'
+    Plug 'nvim-telescope/telescope-fzf-native.nvim', {'on': []}
 endif
 Plug 'LukasPietzschmann/telescope-tabs'
 Plug 'smartpde/telescope-recent-files'
