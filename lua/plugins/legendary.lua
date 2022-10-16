@@ -3,10 +3,12 @@
 
 local legendary = require("legendary")
 
+-- Init
 legendary.setup({ auto_register_which_key = true })
 
 local filters = require("legendary.filters")
 
+-- Maps
 vim.keymap.set({'n', 'v', 'o'}, '<leader>ha',
     function() legendary.find({ kind = 'autocmds' }) end,
     { desc = "Legendary autocommands" })

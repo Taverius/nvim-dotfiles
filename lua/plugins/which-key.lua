@@ -3,7 +3,7 @@
 
 require("which-key").setup {}
 
--- Non-plugin keymaps
+-- Non-plugin (and legendary) keymaps
 require("which-key").register({
     c = { name = "Quickfix" },
     t = { name = "Tabs" },
@@ -13,11 +13,13 @@ require("which-key").register({
     },
     { prefix = "<leader>" })
 
+-- The ,syn map
 require("which-key").register({
     y = { name = "Syntax" },
     },
     { prefix = "<leader>s" })
 
+-- Legendary
 require("which-key").register({
     k = { name = "Keymaps" },
     },
