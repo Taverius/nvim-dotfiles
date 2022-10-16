@@ -1,7 +1,13 @@
 --   vi: tw=100
 -- lua/plugins/which-key.lua @ Leonardo Valeri Manera 2022
 
-require("which-key").setup {}
+require("which-key").setup {
+    plugins = {
+        spelling = {
+            enabled = true
+        }
+    }
+}
 
 -- Non-plugin (and legendary) keymaps
 require("which-key").register({
