@@ -173,10 +173,21 @@ autocmd("WinEnter", {
 })
 
 -- Generic function to check if a buffer is backed by a file
+g.skipbuffer_filetypes = { "Undotree" }
 local buffer_has_file_check = function()
-    if vim.api.nvim_eval([[&buftype =~? 'nofile']]) == 1 then
+    if fn.empty(vim.bo.buftype) == 0 then
+        -- Special buffer type
         return false
-    elseif fn.empty(fn.glob(fn.expand([[%:p]]))) == 1 then
+    elseif vim.tbl_count(g.skipbuffer_filetypes) > 0 vim.tbl_contains(g.skipbuffer_filetypes, vim.bo.filetype) then
+        -- Check against filetype list
+        return false
+    elseif vim.api.nvim_eval("match(expand('%:p'), '[')") >= 0 or vim.api.nvim_eval("match(expand('%:p'), ']')") >= 0 then
+        -- Check for [ and ] that would brea other comparisons
+        return false
+    elseif fn.empty(fn.expand([[%:p:h]])) == 1 then
+        -- Check for an empty path
+        return false
+    elseif fn.filereadable(fn.fnameescape(fn.expand(fn.expand([[%:p]])))) == 0 then
         return false
     else
         return true
@@ -200,11 +211,11 @@ g.skipview_files = {}
 local buffer_make_view_check = function()
     if buffer_has_file_check() then
         return false
-    elseif fn.len("$TEMP") and fn.expand("%:p:h") == vim.env.TEMP then
+    elseif fn.empty(vim.env.TEMP) == 0 and string.find(fn.expand(fn.expand("%:p:h")), vim.env.TEMP) then
         return false
-    elseif fn.len("$TMP") and fn.expand("%:p:h") == vim.env.TMP then
+    elseif fn.empty(vim.env.TMP) == 0 and string.find(fn.expand(fn.expand("%:p:h")), vim.env.TMP) then
         return false
-    elseif fn.index(g.skipview_files, fn.expand("%"), 0, 1) >= 0 then
+    elseif vim.tbl_count(g.skipview_files) > 0 and vim.tbl_contains(g.skipview_files, fn.expand(fn.expand("%"))) then
         return false
     else
         return true
