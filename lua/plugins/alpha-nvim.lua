@@ -4,9 +4,10 @@
 local home = vim.env.HOME
 
 local alpha = require('alpha')
-local dashboard = require('alpha.themes.dashboard')
+local theme = require('alpha.themes.theta')
+local dashboard = require("alpha.themes.dashboard")
 
-dashboard.section.header.val = {
+theme.header.val = {
 [[ ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗]],
 [[ ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║]],
 [[ ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║]],
@@ -15,5 +16,16 @@ dashboard.section.header.val = {
 [[ ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝]]
 }
 
-alpha.setup(dashboard.config)
+theme.buttons.val = {
+        { type = "text", val = "Quick links", opts = { hl = "SpecialComment", position = "center" } },
+        { type = "padding", val = 1 },
+        dashboard.button("e", "  New file", "<cmd>ene<CR>"),
+        dashboard.button("<leader> l f b", "  File browser"),
+        dashboard.button("<leader> l g d", "  Live grep"),
+        dashboard.button("c", "  Configuration", "<cmd>cd " .. vim.fn.stdpath('config') .. " <CR>"),
+        dashboard.button("u", "  Update plugins", "<cmd>PlugUpdate<CR>"),
+        dashboard.button("q", "  Quit", "<cmd>qa<CR>"),
+}
+
+alpha.setup(theme.config)
 
