@@ -3,9 +3,6 @@
 
 require("yanky").setup({})
 
--- Telescope integration
-require("telescope").load_extension("yank_history")
-
 -- Bindings
 -- Override the default p
 vim.keymap.set({"n","x"}, "p", "<Plug>(YankyPutAfter)")
