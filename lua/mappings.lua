@@ -28,7 +28,7 @@ map('i', "<C-Space>",
     { silent = true, desc = 'Toggle fold under cursor' })
 
 -- Let Control-S be 'save' as it is in most other editors
-map({ 'n', 'v', 'o', 'i' }, "<C-s>", cmd.w)
+map({ 'n', 'v', 'o', 'i' }, "<C-s>", cmd.w, { desc = "Save current file" })
 
 -- Map Crlt-C directly to ESC
 map('i', "<C-c>", "<ESC>")

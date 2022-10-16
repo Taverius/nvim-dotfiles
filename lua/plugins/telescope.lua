@@ -80,6 +80,20 @@ map('n', "<leader>lhs", builtin.search_history, { desc = "Telescope Search histo
 map('n', "<leader>lhc", builtin.command_history, { desc = "Telescope Command history" })
 -- <leader>lr -> Search MRU
 map('n', "<leader>lr", require("telescope").extensions.recent_files.pick, { desc = "Telescope MRU" })
--- <leader>ltt -> Search for tabs
-map('n', "<leader>ltt", require('telescope-tabs').list_tabs, { desc = "Telescope Tabs" })
+-- <leader>lw -> Search for tabs
+map('n', "<leader>lw", require('telescope-tabs').list_tabs, { desc = "Telescope Tabs" })
+
+-- Which-Key/Legendary setup
+require("which-key").register({
+    l = { name = "Telescope" },
+    },
+    { prefix = "<leader>" })
+require("which-key").register({
+    g = { name = "Grep" },
+    f = { name = "Files" },
+    t = { name = "Tags" },
+    m = { name = "Marks" },
+    h = { name = "History" },
+    },
+    { prefix = "<leader>l" })
 
