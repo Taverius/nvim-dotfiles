@@ -19,12 +19,6 @@ require("which-key").register({
     },
     { prefix = "<leader>" })
 
--- The ,syn map
-require("which-key").register({
-    y = { name = "Syntax" },
-    },
-    { prefix = "<leader>-" })
-
 -- Legendary
 require("which-key").register({
     k = { name = "Keymaps" },
