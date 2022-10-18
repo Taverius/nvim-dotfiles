@@ -120,8 +120,8 @@ map({ 'n', 'v', 'o', 'i' }, "<C-F4>",
     end,
     { desc = 'Change spelling language' })
 
--- <leader>syn -> show syntax group under cursor
-map({ 'n', 'v', 'o' }, "<Leader>syn",
+-- <leader>-s -> show syntax group under cursor
+map({ 'n', 'v', 'o' }, "<Leader>-s",
     function()
         print(vim.api.nvim_eval([[join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), '/')]]))
     end,

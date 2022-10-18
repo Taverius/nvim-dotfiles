@@ -13,7 +13,7 @@ require("which-key").setup {
 require("which-key").register({
     c = { name = "Quickfix" },
     t = { name = "Tabs" },
-    s = { name = "Syntax" },
+    ["="] = { name = "Utility" },
     h = { name = "Legendary" },
     [","] = "which_key_ignore",
     },
@@ -23,7 +23,7 @@ require("which-key").register({
 require("which-key").register({
     y = { name = "Syntax" },
     },
-    { prefix = "<leader>s" })
+    { prefix = "<leader>-" })
 
 -- Legendary
 require("which-key").register({
