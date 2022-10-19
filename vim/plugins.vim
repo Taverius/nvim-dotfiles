@@ -136,6 +136,8 @@ Plug 'kdheepak/tabline.nvim'
 
 " Motions
 Plug 'ggandor/lightspeed.nvim'
+Plug 'ggandor/leap.nvim'
+Plug 'ggandor/flit.nvim'
 Plug 'haya14busa/vim-asterisk'
 Plug 'haya14busa/is.vim'
 
