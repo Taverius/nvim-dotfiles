@@ -37,18 +37,4 @@ require("which-key").register({
     ["t"] = "Search forward until",
     ["T"] = "Search backward until",
     }, { mode = 'o' })
--- Legendary
-require("legendary").bind_keymaps({
-    { 's', description = "Search forward", mode = { 'n', 'v' } },
-    { 'S', description = "Search backward", mode = { 'n', 'v' } },
-    { 'z', description = "Select until forward", mode = { 'o' } },
-    { 'Z', description = "Select until backward", mode = { 'o' } },
-    { 'x', description = "Select including forward", mode = { 'o' } },
-    { 'X', description = "Search including backward", mode = { 'o' } },
-    { 'gs', description = "Search in next windows", mode = { 'n' } },
-    { 'gS', description = "Search in previous windows", mode = { 'n' } },
-    { 'f', description = "Search forward including", mode = { 'n', 'v', 'o' } },
-    { 'F', description = "Search backward including", mode = { 'n', 'v', 'o' } },
-    { 't', description = "Search forward until", mode = { 'n', 'v', 'o' } },
-    { 'T', description = "Search backward until", mode = { 'n', 'v', 'o' } },
-})
+
