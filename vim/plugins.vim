@@ -141,7 +141,6 @@ Plug 'haya14busa/is.vim'
 
 " Misc
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'godlygeek/tabular'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-easy-align'
