@@ -10,14 +10,14 @@ local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
 -- -- If we're on windows, check if powershell is available
-if vim.fn.has('windows') == 1 and ( vim.fn.executable('pwsh') == 1 or vim.fn.executable('powershell') == 1 ) then
-    opt.shell = ( vim.fn.executable('pwsh') == 1 ) and 'pwsh' or 'powershell'
-    opt.shellcmdflag = [[-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;]]
-    opt.shellredir = [[2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode]]
-    opt.shellpipe = [[2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode]]
-    opt.shellquote = ''
-    opt.shellxquote = ''
-end
+-- if vim.fn.has('windows') == 1 and ( vim.fn.executable('pwsh') == 1 or vim.fn.executable('powershell') == 1 ) then
+--     opt.shell = ( vim.fn.executable('pwsh') == 1 ) and 'pwsh' or 'powershell'
+--     opt.shellcmdflag = [[-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;]]
+--     opt.shellredir = [[2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode]]
+--     opt.shellpipe = [[2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode]]
+--     opt.shellquote = ''
+--     opt.shellxquote = ''
+-- end
 
 -- Disable unused providers
 g.loaded_perl_provider = 0
