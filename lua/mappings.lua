@@ -49,7 +49,7 @@ map('v', 'V', [[<ESC>`<V`>]])
 map('v', 'v', [[<ESC>`<v`>]])
 
 -- Remove the ^M when the encoding gets messed up
-map({ 'n', 'v', 'o' }, "<leader>M", [[mmHmt:%s/<C-V><CR>//ge<CR>'tzt'm]],
+map({ 'n', 'v', 'o' }, "<leader>=m", [[mmHmt:%s/<C-V><CR>//ge<CR>'tzt'm]],
     { silent = true, desc = 'Clear ^M from wrong encoding' })
 
 -- Allows you to stay in visual mode when indenting with < and >
@@ -120,8 +120,8 @@ map({ 'n', 'v', 'o', 'i' }, "<C-F4>",
     end,
     { desc = 'Change spelling language' })
 
--- <leader>-s -> show syntax group under cursor
-map({ 'n', 'v', 'o' }, "<Leader>-s",
+-- <leader>=s -> show syntax group under cursor
+map({ 'n', 'v', 'o' }, "<Leader>=s",
     function()
         print(vim.api.nvim_eval([[join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), '/')]]))
     end,

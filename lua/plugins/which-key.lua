@@ -25,9 +25,3 @@ require("which-key").register({
     },
     { prefix = "<leader>h" })
 
--- Splitjoin
-require("which-key").register({
-    ["gS"] = { "Split code block" },
-    ["gJ"] = { "Join code block"}
-    })
-
