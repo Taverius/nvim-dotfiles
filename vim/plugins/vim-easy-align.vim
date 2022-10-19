@@ -1,10 +1,6 @@
 "   vi: tw=100
 " vim/plugins/vim-easy-align.vim @ (c) Leonardo Valeri Manera 2022
 
-" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-xmap <Silent> ga <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. <Leader>aip)
-nmap <Silent> ga <Plug>(EasyAlign)
 " custom patterns
 let g:easy_align_delimiters = {
             \ '>': { 'pattern': '>>\|=>\|>' },
