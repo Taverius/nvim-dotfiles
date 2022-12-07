@@ -4,7 +4,11 @@
 local legendary = require("legendary")
 
 -- Init
-legendary.setup({ auto_register_which_key = true })
+legendary.setup({
+    which_key = {
+        auto_register = true
+    }
+})
 
 local filters = require("legendary.filters")
 
