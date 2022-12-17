@@ -113,8 +113,8 @@ Plug 'gbprod/cutlass.nvim'
 Plug 'gbprod/yanky.nvim'
 
 " COQ
-" Plug 'ms-jpq/coq_nvim', Cond(has('python3'), {'branch': 'coq'})
-Plug 'ms-jpq/coq_nvim', Cond(has('python3'), {'commit': '84ec5faf2aaf49819e626f64dd94f4e71cf575bc'})
+Plug 'ms-jpq/coq_nvim', Cond(has('python3'), {'branch': 'coq'})
+" Plug 'ms-jpq/coq_nvim', Cond(has('python3'), {'commit': '84ec5faf2aaf49819e626f64dd94f4e71cf575bc'})
 Plug 'ms-jpq/coq.artifacts', Cond(has('python3'), {'branch': 'artifacts'})
 Plug 'ms-jpq/coq.thirdparty', Cond(has('python3'), {'branch': '3p'})
 
