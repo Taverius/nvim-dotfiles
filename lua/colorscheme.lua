@@ -7,7 +7,6 @@ require("github-theme").setup({ theme_style = "dimmed", })
 require("gruvbox").setup({ contrast = "soft", })
 -- melange
 -- onedarkpro
-require("onedarkpro").setup({ dark_theme = "onedark", })
 -- catpuccin
 vim.g.catppuccin_flavour = "frappe"
 -- lighthaus
