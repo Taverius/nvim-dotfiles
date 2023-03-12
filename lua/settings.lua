@@ -25,8 +25,8 @@ g.loaded_ruby_provider = 0
 g.loaded_node_provider = 0
 
 -- Set Python 3 binary
-if fn.executable("C:/Dev/Python/3/python.exe") == 1 then
-    g.python3_host_prog = "C:/Dev/Python/3/python.exe"
+if fn.executable("C:/Dev/Python/python.exe") == 1 then
+    g.python3_host_prog = "C:/Dev/Python/python.exe"
 end
 
 if fn.has('windows') then
