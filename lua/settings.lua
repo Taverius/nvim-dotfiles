@@ -79,7 +79,7 @@ opt.numberwidth = 2                         -- Minimum Number column width is 1 
 opt.breakindent = true                      -- Every wrapped line will continue visually indented
 opt.breakindentopt = "sbr"                  -- Show the break character before a wrapped line
 opt.updatetime = 100                        -- Faster ASync updates
-opt.printoptions:append { "syntax:y" }      -- Syntax when printing
+-- opt.printoptions:append { "syntax:y" }      -- Syntax when printing
 opt.virtualedit = { "block", "onemore" }    -- Virtual edit in VBlock mode, and one past the end
 opt.completeopt:append { "menuone", "longest" }
                                             -- Also show the menu when there is only one option,
