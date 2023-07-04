@@ -1,21 +1,17 @@
 --   vi: tw=100
--- init.lua @ Leonardo Valeri Manera 2022
+-- init.lua @ Leonardo Valeri Manera 2023
 
 local source = function(file)
     vim.cmd.source(vim.fn.stdpath('config') .. "/vim/" .. string.gsub(file, "%.", "/") .. ".vim")
 end
 
--- vim-plug #plug setup
-source("plugins")
-
 -- general setup
 require("settings")
 require("mappings")
-require("colorscheme")
 
 -- plugin configurations
-vim.cmd("packadd! starsector-ft.vim")
-vim.cmd("packadd! my-gutentags")
+require("plugins")
+require("colorscheme")
 -- Which-key and Legendary go first so they can be used in all plugins to register maps
 require("plugins.legendary")
 require("plugins.which-key")
@@ -33,9 +29,8 @@ require("plugins.bufutils")
 require("plugins.fern")
 require("plugins.cutlass")
 require("plugins.yanky")
-source("plugins.asyncomplete")
-require("plugins.coq")
 require("plugins.gutentags")
+require("plugins.nvim-cmp")
 require("plugins.lualine")
 require("plugins.tabline")
 require("plugins.leap")
