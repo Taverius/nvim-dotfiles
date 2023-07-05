@@ -49,7 +49,7 @@ if exists("g:neovide")
     let g:neovide_refresh_rate_idle = 5
 elseif exists('g:fvim_loaded')
     " We're in FVim
-    set guifont=VictorMono\ NF:h16
+    set guifont=VictorMono_NFM:h16
 
     nnoremap <A-CR> :FVimToggleFullScreen<CR>
 
@@ -86,17 +86,31 @@ else
     " Assume nvim-qt
 
     " Set the font
-    Guifont! VictorMono NF:h14
+    set guifont=VictorMono\ NFM:h12
+    if exists(':GuiFont')
+        Guifont! VictorMono_NFM:h14
+    endif
 
     " Set UI to adaptive
-    GuiAdaptiveColor 1
-    GuiAdaptiveFont 1
-    GuiAdaptiveStyle 1
+    if exists(':GuiAdaptiveColor')
+        GuiAdaptiveColor 1
+    endif
+    if exists(':GuiAdaptiveFont')
+        GuiAdaptiveFont 1
+    endif
+    if exists(':GuiAdaptiveStyle')
+        GuiAdaptiveStyle 1
+    endif
 
     " Enable font ligatures
-    GuiRenderLigatures 1
+    if exists(':GuiRenderLigatures')
+        GuiRenderLigatures 1
+    endif
 
     " Use the text tabline
-    GuiTabline 0
+    if exists(':GuiTabline')
+        GuiTabline 0
+    endif
+
 endif
 
