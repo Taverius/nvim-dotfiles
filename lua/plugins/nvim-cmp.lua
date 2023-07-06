@@ -41,29 +41,38 @@ cmp.setup({
             elseif has_words_before() then
                 cmp.complete()
             else
-                fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+                fallback()
             end
         end, { "i", "s" }),
 
-        ["<S-Tab>"] = cmp.mapping(function()
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
             elseif vim.fn["vsnip#jumpable"](-1) == 1 then
                 feedkey("<Plug>(vsnip-jump-prev)", "")
+            else
+                fallback()
             end
         end, { "i", "s" }),
 
-        ["<CR>"] = cmp.mapping({
-            i = function(fallback)
-                if cmp.visible() and cmp.get_active_entry() then
-                    cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
-                else
-                    fallback()
-                end
-            end,
-            s = cmp.mapping.confirm({ select = true }),
-            c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
-        }),
+        -- Replace on shift-enter
+        ["<CR>"] = function(fallback)
+            if cmp.visible() and cmp.get_active_entry() then
+                cmp.mapping.confirm({ select = true })
+            else
+                fallback()
+            end
+        end,
+        ["<S-CR>"] = function(fallback)
+            if cmp.visible() and cmp.get_active_entry() then
+                cmp.mapping.confirm({
+                    behavior = cmp.ConfirmBehavior.Replace,
+                    select = true,
+                })
+            else
+                fallback()
+            end
+        end,
     }),
     sorting = {
         comparators = {
