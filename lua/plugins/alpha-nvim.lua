@@ -1,5 +1,5 @@
 --   vi: tw=100
--- lua/plugins/alpha-nvim.lua @ Leonardo Valeri Manera 2022
+-- lua/plugins/alpha-nvim.lua @ Leonardo Valeri Manera 2023
 
 local alpha = require('alpha')
 local theme = require('alpha.themes.theta')
@@ -21,7 +21,7 @@ theme.buttons.val = {
         dashboard.button("<leader> l f b", "  File browser"),
         dashboard.button("<leader> l g d", "  Live grep"),
         dashboard.button("c", "  Configuration", "<cmd>cd " .. vim.fn.stdpath('config') .. " <CR>"),
-        dashboard.button("u", "  Update plugins", "<cmd>PlugUpdate<CR>"),
+        dashboard.button("u", "  Update plugins", "<cmd>Lazy<CR>"),
         dashboard.button("q", "  Quit", "<cmd>qa<CR>"),
 }
 
