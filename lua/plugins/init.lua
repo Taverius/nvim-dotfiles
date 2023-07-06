@@ -24,13 +24,6 @@ require("lazy").setup({
         },
     },
 
-    -- YARP
-    -- {
-    --     "roxma/nvim-yarp",
-    --     enabled = vim.fn.has('python3'),
-    --     build = "python -m pip install --upgrade wheel pynvim neovim-remote virtualenv",
-    -- },
-
     -- Vim-Matchup
     "andymass/vim-matchup",
 
@@ -55,7 +48,7 @@ require("lazy").setup({
     -- FZF
     {
         "junegunn/fzf",
-        enabled = vim.fn.executable("fzf"),
+        cond = vim.fn.executable("fzf"),
     },
 
     -- Repeat
@@ -76,7 +69,7 @@ require("lazy").setup({
     -- Fuzzy
     {
         "nvim-telescope/telescope-fzf-native.nvim",
-        enabled = vim.fn.executable("cmake")
+        cond = vim.fn.executable("cmake")
             or (not vim.fn.has("windows")) and vim.fn.executable("make")
             or false,
         build = vim.fn.executable("cmake") and "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
@@ -103,7 +96,7 @@ require("lazy").setup({
             "fcying/telescope-ctags-outline.nvim",
             {
                 "kelly-lin/telescope-ag",
-                enabled = vim.fn.executable("ag"),
+                cond = vim.fn.executable("ag"),
             },
             "tom-anders/telescope-vim-bookmarks.nvim",
         },
@@ -170,7 +163,7 @@ require("lazy").setup({
             },
             {
                 "tzachar/cmp-fuzzy-path",
-                enabled = vim.fn.executable("fd"),
+                cond = vim.fn.executable("fd"),
                 dependencies = {
                     "tzachar/fuzzy.nvim",
                 },
@@ -222,7 +215,7 @@ require("lazy").setup({
     -- Filetypes
     "sheerun/vim-polyglot",
     "k-takata/vim-nsis",
-    { "Taverius/starsector-ft.vim", dev = true },
+    { "Taverius/starsector-ft.vim", dev = false },
 
     -- Colorschemes
     "projekt0n/github-nvim-theme",
