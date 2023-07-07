@@ -113,19 +113,6 @@ require("lazy").setup({
     "artnez/vim-wipeout",
     "smitajit/bufutils.vim",
 
-    -- Fern
-    {
-        "lambdalisue/fern.vim",
-        dependencies = {
-            "lambdalisue/fern-git-status.vim",
-            "lambdalisue/nerdfont.vim",
-            "lambdalisue/fern-renderer-nerdfont.vim",
-            "lambdalisue/glyph-palette.vim",
-            "lambdalisue/fern-hijack.vim",
-            "yuki-yano/fern-preview.vim",
-        },
-    },
-
     -- The artist formerly known as the artist formerly known as vim-easyclip
     "gbprod/cutlass.nvim",
     "gbprod/yanky.nvim",
