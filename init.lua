@@ -15,7 +15,6 @@ require("colorscheme")
 -- Which-key and Legendary go first so they can be used in all plugins to register maps
 require("plugins.legendary")
 require("plugins.which-key")
-require("plugins.vim-plug")
 require("plugins.nvim-treesitter")
 require("plugins.vim-matchup")
 require("plugins.alpha-nvim")
