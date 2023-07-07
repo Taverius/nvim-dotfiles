@@ -14,3 +14,9 @@ require("mini.basics").setup(
     },
 )
 
+-- mini-bracketed
+require('mini.bracketed').setup()
+
+-- mini-comment
+require('mini.comment').setup()
+
