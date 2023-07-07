@@ -32,3 +32,6 @@ require("mini.files").setup({
 -- <leader>o -> Mini-Files
 vim.keymap.set('n', "<leader>o", ":lua MiniFiles.open()<CR>", { silent = true, desc = "Open Mini-Files" })
 
+-- mini-move
+require('mini.move').setup()
+

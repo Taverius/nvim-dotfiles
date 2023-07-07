@@ -208,7 +208,6 @@ require("lazy").setup({
     "jeffkreeftmeijer/vim-numbertoggle",
     "junegunn/vim-pseudocl",
     "junegunn/vim-peekaboo",
-    "matze/vim-move",
     "mhinz/vim-signify",
     "tpope/vim-abolish",
     "tpope/vim-surround",
