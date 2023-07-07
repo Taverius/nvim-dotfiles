@@ -35,3 +35,12 @@ vim.keymap.set('n', "<leader>o", ":lua MiniFiles.open()<CR>", { silent = true, d
 -- mini-move
 require('mini.move').setup()
 
+-- mini-splitjoin
+require('mini.splitjoin').setup({
+    mappings = {
+        toggle = "",
+        split = "<leader>s",
+        join = "<leader>j",
+    },
+})
+
