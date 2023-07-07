@@ -40,6 +40,5 @@ require("plugins.splitjoin")
 require("plugins.vim-numbertoggle")
 require("plugins.surround")
 require("plugins.characterize")
-require("plugins.comment")
 require("plugins.stay-in-place")
 

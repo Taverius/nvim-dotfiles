@@ -227,7 +227,6 @@ require("lazy").setup({
     "tpope/vim-surround",
     "tpope/vim-fugitive",
     "tpope/vim-characterize",
-    "numToStr/Comment.nvim",
     "gbprod/stay-in-place.nvim",
 
     -- VimRegEx helper
