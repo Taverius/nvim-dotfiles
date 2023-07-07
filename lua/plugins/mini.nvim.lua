@@ -4,3 +4,6 @@
 -- mini-ai
 require('mini.ai').setup()
 
+-- mini-align
+require('mini.align').setup()
+
