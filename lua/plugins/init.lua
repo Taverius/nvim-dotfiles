@@ -3,14 +3,14 @@
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -194,6 +194,7 @@ require("lazy").setup({
     "haya14busa/is.vim",
 
     -- Misc
+    { "echasnovski/mini.nvim", version = "*" },
     "AndrewRadev/splitjoin.vim",
     "jeffkreeftmeijer/vim-numbertoggle",
     "junegunn/vim-pseudocl",
@@ -234,7 +235,16 @@ require("lazy").setup({
 {
     -- Options
     dev = {
+        -- where the dev plugin path is
         path = vim.fn.stdpath("data") .. "/dev",
-    }
+    },
+    checker = {
+            -- check for updates automatically
+            enabled = true,
+            -- don't notify, we use lualine for this
+            notify = false,
+            -- check once a day
+            frequence = 86400,
+        }
 })
 
