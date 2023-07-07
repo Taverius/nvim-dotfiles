@@ -2,7 +2,12 @@
 -- lua/plugins/lualine.lua @ Leonardo Valeri Manera 2022
 
 require("lualine").setup {
-    extensions = { "fugitive", "fern", "fzf", "quickfix" },
+    extensions = {
+        "fugitive",
+        "fern",
+        "fzf",
+        "quickfix",
+    },
     sections = {
         lualine_x = {
             {
