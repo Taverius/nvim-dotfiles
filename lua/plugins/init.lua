@@ -39,9 +39,6 @@ require("lazy").setup({
     -- DevIcons
     "kyazdani42/nvim-web-devicons",
 
-    -- Dashboard
-    "goolord/alpha-nvim",
-
     -- Auto-Save
     "Pocco81/auto-save.nvim",
 

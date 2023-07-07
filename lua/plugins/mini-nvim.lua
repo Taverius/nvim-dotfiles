@@ -33,14 +33,45 @@ require("mini.files").setup({
 vim.keymap.set('n', "<leader>o", ":lua MiniFiles.open()<CR>", { silent = true, desc = "Open Mini-Files" })
 
 -- mini-move
-require('mini.move').setup()
+require("mini.move").setup()
 
 -- mini-splitjoin
-require('mini.splitjoin').setup({
+require("mini.splitjoin").setup({
     mappings = {
         toggle = "",
         split = "<leader>s",
         join = "<leader>j",
+    },
+})
+
+-- mini-starter
+local starter = require("mini.starter")
+starter.setup({
+    items = {
+        starter.sections.telescope(),
+        {
+            name = "Configuration",
+            action = [[lua require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })]],
+            section = "Actions",
+        },
+        {
+            name = "Update Plugins",
+            action = [[lua require("lazy").sync()]],
+            section = "Actions",
+        },
+        starter.sections.builtin_actions(),
+    },
+    header = table.concat({
+        [[███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗]],
+        [[████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║]],
+        [[██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║]],
+        [[██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║]],
+        [[██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║]],
+        [[╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝]],
+    },"\n"),
+    content_hooks = {
+        starter.gen_hook.indexing("all", nil),
+        starter.gen_hook.aligning("center", "center"),
     },
 })
 
