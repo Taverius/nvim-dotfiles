@@ -220,7 +220,6 @@ require("lazy").setup({
     "AndrewRadev/splitjoin.vim",
     "jeffkreeftmeijer/vim-numbertoggle",
     "junegunn/vim-pseudocl",
-    "junegunn/vim-easy-align",
     "junegunn/vim-peekaboo",
     "matze/vim-move",
     "mhinz/vim-signify",
