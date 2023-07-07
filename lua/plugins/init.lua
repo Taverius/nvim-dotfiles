@@ -187,11 +187,33 @@ require("lazy").setup({
     "kdheepak/tabline.nvim",
 
     -- Motions
-    "ggandor/lightspeed.nvim",
-    "ggandor/leap.nvim",
-    "ggandor/flit.nvim",
+    {
+        "ggandor/lightspeed.nvim",
+        dependencies = {
+            "tpope/vim-repeat",
+        },
+        cond = false,
+    },
+    {
+        "ggandor/leap.nvim",
+        dependencies = {
+            "tpope/vim-repeat",
+        },
+    },
+    {
+        "ggandor/flit.nvim",
+        dependencies = {
+            "tpope/vim-repeat",
+            "ggandor/leap.nvim",
+        },
+    },
     "haya14busa/vim-asterisk",
-    "haya14busa/is.vim",
+    {
+        "haya14busa/is.vim",
+        dependencies = {
+            "haya14busa/vim-asterisk",
+        },
+    },
 
     -- Misc
     { "echasnovski/mini.nvim", version = "*" },
