@@ -216,7 +216,7 @@ require("lazy").setup({
     },
 
     -- Misc
-    { "echasnovski/mini.nvim", version = "*" },
+    { "echasnovski/mini.nvim", version = false },
     "AndrewRadev/splitjoin.vim",
     "jeffkreeftmeijer/vim-numbertoggle",
     "junegunn/vim-pseudocl",
