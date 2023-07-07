@@ -20,3 +20,6 @@ require('mini.bracketed').setup()
 -- mini-comment
 require('mini.comment').setup()
 
+-- mini-cursorword
+require('mini.cursorword').setup()
+
