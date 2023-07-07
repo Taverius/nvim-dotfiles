@@ -20,7 +20,8 @@ theme.buttons.val = {
         dashboard.button("e", "  New file", "<cmd>ene<CR>"),
         dashboard.button("<leader> l f b", "  File browser"),
         dashboard.button("<leader> l g d", "  Live grep"),
-        dashboard.button("c", "  Configuration", "<cmd>cd " .. vim.fn.stdpath('config') .. " <CR>"),
+        dashboard.button("c", "  Configuration",
+                "<cmd>cd " .. vim.fn.stdpath('config') .. " <CR>:Telescope find_files<CR>"),
         dashboard.button("u", "  Update plugins", "<cmd>Lazy<CR>"),
         dashboard.button("q", "  Quit", "<cmd>qa<CR>"),
 }
