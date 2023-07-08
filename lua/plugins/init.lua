@@ -21,11 +21,20 @@ require("lazy").setup({
         build = ":TSUpdate",
         dependencies = {
             "JoosepAlviste/nvim-ts-context-commentstring",
+            "nvim-treesitter/nvim-treesitter-textobjects",
         },
     },
 
     -- Vim-Matchup
     "andymass/vim-matchup",
+
+    -- Surround
+    {
+        "kylechui/nvim-surround",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+        },
+    },
 
     -- Dressing
     "stevearc/dressing.nvim",
@@ -206,7 +215,6 @@ require("lazy").setup({
     "junegunn/vim-peekaboo",
     "mhinz/vim-signify",
     "tpope/vim-abolish",
-    "tpope/vim-surround",
     "tpope/vim-fugitive",
     "tpope/vim-characterize",
     "gbprod/stay-in-place.nvim",
