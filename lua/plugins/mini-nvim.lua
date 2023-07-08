@@ -1,5 +1,5 @@
 --   vi: tw=100
--- lua/plugins/mini.nvim.lua @ Leonardo Valeri Manera 2023
+-- lua/plugins/mini-nvim.lua @ Leonardo Valeri Manera 2023
 
 -- mini-ai
 require("mini.ai").setup()
@@ -18,7 +18,13 @@ require("mini.basics").setup({
 require("mini.bracketed").setup()
 
 -- mini-comment
-require("mini.comment").setup()
+require("mini.comment").setup({
+    options = {
+        custom_commentstring = function()
+            return require("ts_context_commentstring.internal").calculate_commentstring() or vim.bo.commentstring
+        end,
+    }
+})
 
 -- mini-cursorword
 require("mini.cursorword").setup()
@@ -74,4 +80,7 @@ starter.setup({
         starter.gen_hook.aligning("center", "center"),
     },
 })
+
+-- mini-trailspace
+require('mini.trailspace').setup()
 
