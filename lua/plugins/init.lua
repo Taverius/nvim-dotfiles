@@ -218,6 +218,7 @@ require("lazy").setup({
     "tpope/vim-fugitive",
     "tpope/vim-characterize",
     "gbprod/stay-in-place.nvim",
+    "equalsraf/neovim-gui-shim",
 
     -- VimRegEx helper
     "Raimondi/VimRegEx.vim",
