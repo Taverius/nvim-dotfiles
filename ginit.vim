@@ -29,7 +29,7 @@ nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
 
 if exists("g:neovide")
     " We're in Neovide
-    set guifont=VictorMono_NF:h12
+    set guifont=VictorMono_Nerd_Font:h13
 
     " Zoom in/out with scale with [Ctrl -] and [Ctrl =]
     let g:neovide_scale_factor=1.0
@@ -49,7 +49,7 @@ if exists("g:neovide")
     let g:neovide_refresh_rate_idle = 5
 elseif exists('g:fvim_loaded')
     " We're in FVim
-    set guifont=VictorMono_NFM:h16
+    set guifont=VictorMono\ Nerd\ Font:h16
 
     nnoremap <A-CR> :FVimToggleFullScreen<CR>
 
@@ -73,10 +73,6 @@ elseif exists('g:fvim_loaded')
     " Automatic input method engagement in Insert mode
     FVimKeyAutoIme v:true
 
-    " Don't use the UI Popups
-    FVimUIPopupMenu v:false
-    FVimUIWildMenu v:false
-
     " Default options (workspace-agnostic)
     FVimDefaultWindowWidth 1300
     FVimDefaultWindowHeight 1400
@@ -86,17 +82,13 @@ else
     " Assume nvim-qt
 
     " Set the font
-    set guifont=VictorMono\ NFM:h12
     if exists(':GuiFont')
-        Guifont! VictorMono_NFM:h14
+        Guifont! VictorMono\ NF:h13
     endif
 
     " Set UI to adaptive
     if exists(':GuiAdaptiveColor')
         GuiAdaptiveColor 1
-    endif
-    if exists(':GuiAdaptiveFont')
-        GuiAdaptiveFont 1
     endif
     if exists(':GuiAdaptiveStyle')
         GuiAdaptiveStyle 1
@@ -107,10 +99,19 @@ else
         GuiRenderLigatures 1
     endif
 
+    " Use text popup menu
+    if exists(':GuiPopupmenu')
+        GuiPopupmenu 0
+    endif
+
     " Use the text tabline
     if exists(':GuiTabline')
         GuiTabline 0
     endif
+
+    " Remove the how to remove mouse menu lines
+    aunmenu PopUp.How-to\ disable\ mouse
+    aunmenu PopUp.-1-
 
 endif
 
