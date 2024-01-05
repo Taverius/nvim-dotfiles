@@ -29,7 +29,7 @@ nnoremap <silent> <C-ScrollWheelDown> :set guifont=-<CR>
 
 if exists("g:neovide")
     " We're in Neovide
-    set guifont=VictorMono_Nerd_Font:h13
+    set guifont=VictorMono_Nerd_Font:h13:#e-subpixelantialias
 
     " Zoom in/out with scale with [Ctrl -] and [Ctrl =]
     let g:neovide_scale_factor=1.0
