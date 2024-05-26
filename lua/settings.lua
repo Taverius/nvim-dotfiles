@@ -38,7 +38,6 @@ g.loaded = 1
 g.loaded_netrwPlugin = 1
 
 g.mapleader = ","                           -- Set the Map Leader early
-opt.pastetoggle = "<F1>"                    -- Toggle Paste mode with F1
 opt.number = true                           -- Show line numbers
 opt.shiftwidth = 4                          -- Indent by 4 spaces
 opt.softtabstop = 4                         -- Use 4 spaces instead of tab
@@ -46,7 +45,7 @@ opt.shiftround = true                       -- Round indent (<,>) to multiples o
 opt.expandtab = true                        -- Convert tabs to spaces
 opt.lazyredraw = true                       -- Don't redraw the screen mid-command
 opt.visualbell = true                       -- Flash the screen instead of beeping
-opt.backspace = "3"                         -- Backspace like normal apps
+opt.backspace = "indent,eol,nostop"         -- Backspace like normal apps
 opt.confirm = true                          -- Instead of failing because of unsaved changes, raise
                                             -- a dialogue
 opt.whichwrap = "b,s,<,>,h,l,~,[,]"         -- Make left & right movements wrap around lines always
