@@ -226,6 +226,7 @@ require("lazy").setup({
     -- Filetypes
     "sheerun/vim-polyglot",
     "k-takata/vim-nsis",
+    "cmcaine/vim-uci",
     { "Taverius/starsector-ft.vim", dev = false },
 
     -- Colorschemes
