@@ -78,7 +78,7 @@ require("lazy").setup({
         cond = vim.fn.executable("cmake")
             or (not vim.fn.has("windows")) and vim.fn.executable("make")
             or false,
-        build = vim.fn.executable("cmake") and "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
+        build = vim.fn.executable("cmake") and "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release"
             or (not vim.fn.has("windows")) and vim.fn.executable("make") and "make"
             or nil,
     },

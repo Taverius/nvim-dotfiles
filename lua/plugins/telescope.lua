@@ -22,8 +22,6 @@ if vim.fn.executable('cmake') == 1 or vim.fn.executable('make') == 1 then
     -- To get fzf loaded and working with telescope, you need to call
     -- load_extension, somewhere after setup function:
     extension("fzf")
-else
-    setup {}
 end
 
 -- Tabs
