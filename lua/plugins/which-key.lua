@@ -1,27 +1,18 @@
 --   vi: tw=100
 -- lua/plugins/which-key.lua @ Leonardo Valeri Manera 2022
 
-require("which-key").setup {
-    plugins = {
-        spelling = {
-            enabled = true
-        }
-    }
-}
+require("which-key").setup {}
 
 -- Non-plugin (and legendary) keymaps
-require("which-key").register({
-    c = { name = "Quickfix" },
-    t = { name = "Tabs" },
-    ["="] = { name = "Utility" },
-    h = { name = "Legendary" },
-    [","] = "which_key_ignore",
-    },
-    { prefix = "<leader>" })
+require("which-key").add({
+    { "<leader>,", hidden = true },
+    { "<leader>=", group = "Utility" },
+    { "<leader>c", group = "Quickfix" },
+    { "<leader>t", group = "Tabs" },
+    { "<leader>h", group = "Legendary"},
+})
 
 -- Legendary
-require("which-key").register({
-    k = { name = "Keymaps" },
-    },
-    { prefix = "<leader>h" })
-
+require("which-key").add({
+    { "<leader>hk", group = "Keymaps" },
+})

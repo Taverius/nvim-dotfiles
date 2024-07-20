@@ -82,16 +82,12 @@ map('n', "<leader>lr", require("telescope").extensions.recent_files.pick, { desc
 map('n', "<leader>lw", require('telescope-tabs').list_tabs, { desc = "Telescope Tabs" })
 
 -- Which-Key/Legendary setup
-require("which-key").register({
-    l = { name = "Telescope" },
-    },
-    { prefix = "<leader>" })
-require("which-key").register({
-    g = { name = "Grep" },
-    f = { name = "Files" },
-    t = { name = "Tags" },
-    m = { name = "Marks" },
-    h = { name = "History" },
-    },
-    { prefix = "<leader>l" })
+require("which-key").add({
+    { "<leader>l", group = "Telescope" },
+    { "<leader>lf", group = "Files" },
+    { "<leader>lg", group = "Grep" },
+    { "<leader>lh", group = "History" },
+    { "<leader>lm", group = "Marks" },
+    { "<leader>lt", group = "Tags" },
+})
 

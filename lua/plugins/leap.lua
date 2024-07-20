@@ -5,28 +5,34 @@ require('leap').add_default_mappings()
 
 -- Which-key/Legendary registrations
 -- Normal-mode maps
-require("which-key").register({
-    ["s"] = "Search forward",
-    ["S"] = "Search backward",
-    ["gs"] = "Search in next windows",
-    ["gS"] = "Search in previous windows",
-    }, { mode = 'n' })
+require("which-key").add({
+    { "s", desc = "Search forward" },
+    { "S", desc = "Search backward" },
+    { "gs", desc = "Search in next windows" },
+    { "gS", desc = "Search in previous windows" },
+})
 -- Visual-mode maps
-require("which-key").register({
-    ["s"] = "Search forward",
-    ["S"] = "Search backward",
-    ["x"] = "Select until forward",
-    ["X"] = "Search until backward",
-    ["gs"] = "Search in next windows",
-    ["gS"] = "Search in previous windows",
-    }, { mode = 'v' })
+require("which-key").add({
+    {
+      mode = { "v" },
+      { "s", desc = "Search forward" },
+      { "S", desc = "Search backward" },
+      { "x", desc = "Select until forward" },
+      { "X", desc = "Search until backward" },
+      { "gs", desc = "Search in next windows" },
+      { "gS", desc = "Search in previous windows" },
+    },
+})
 -- Operator-mode maps
-require("which-key").register({
-    ["s"] = "Search forward",
-    ["S"] = "Search backward",
-    ["x"] = "Select until forward",
-    ["X"] = "Search until backward",
-    ["gs"] = "Search in next windows",
-    ["gS"] = "Search in previous windows",
-    }, { mode = 'o' })
+require("which-key").add({
+    {
+      mode = { "o" },
+      { "s", desc = "Search forward" },
+      { "S", desc = "Search backward" },
+      { "x", desc = "Select until forward" },
+      { "X", desc = "Search until backward" },
+      { "gs", desc = "Search in next windows" },
+      { "gS", desc = "Search in previous windows" },
+    },
+})
 

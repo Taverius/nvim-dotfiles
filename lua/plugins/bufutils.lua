@@ -8,8 +8,7 @@ vim.keymap.set({'n', 'v', 'o'}, "<leader>bc", ":BCloseThis<CR>", {silent = true,
 vim.keymap.set({'n', 'v', 'o'}, "<leader>bo", ":BCloseOther<CR>", {silent = true, desc = "Close all other buffers"})
 vim.keymap.set({'n', 'v', 'o'}, "<leader>bb", ":BCloseOther<CR>", {silent = true, desc = "Close this buffer, return to previous"})
 
-require("which-key").register({
-    b = { name = "Buffers" },
-    },
-    { prefix = "<leader>" })
+require("which-key").add({
+    { "<leader>b", group = "Buffers" },
+})
 
