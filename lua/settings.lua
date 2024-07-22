@@ -9,26 +9,6 @@ local cmd = vim.cmd
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
--- -- If we're on windows, check if powershell is available
--- if vim.fn.has('windows') == 1 and ( vim.fn.executable('pwsh') == 1 or vim.fn.executable('powershell') == 1 ) then
---     opt.shell = ( vim.fn.executable('pwsh') == 1 ) and 'pwsh' or 'powershell'
---     opt.shellcmdflag = [[-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;]]
---     opt.shellredir = [[2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode]]
---     opt.shellpipe = [[2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode]]
---     opt.shellquote = ''
---     opt.shellxquote = ''
--- end
-
--- Disable unused providers
-g.loaded_perl_provider = 0
-g.loaded_ruby_provider = 0
-g.loaded_node_provider = 0
-
--- Set Python 3 binary
-if fn.executable("C:/Dev/Python/python.exe") == 1 then
-    g.python3_host_prog = "C:/Dev/Python/python.exe"
-end
-
 if fn.has('windows') then
     autocmd("UIEnter", { command = "cd ~", once = true })
 end
