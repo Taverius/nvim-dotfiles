@@ -2,7 +2,10 @@
 -- lua/colorscheme.lua @ Leonardo Valeri Manera 2022
 
 -- gruvbox
-require("gruvbox").setup({ contrast = "soft", })
+require("gruvbox").setup({
+    terminal_colors = true,
+    contrast = "soft",
+})
 -- melange
 -- onedarkpro
 -- catpuccin

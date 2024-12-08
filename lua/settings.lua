@@ -113,26 +113,26 @@ autocmd({ "InsertLeave", "WinLeave" }, {
 })
 
 -- Terminal color checks
-autocmd("UIEnter", {
-    callback = function()
-        if vim.api.nvim_eval([[$TERM =~ '^\(rxvt\|screen\|interix\|putty\|win32con\)\(-.*\)\?$']]) == 1 then
-            opt.termguicolors = false
-        elseif vim.api.nvim_eval([[$TERM =~ '^\(tmux\|iterm\|vte\|gnome\|vtpcon\|conemu\)\(-.*\)\?$']]) == 1 then
-            opt.termguicolors = true
-        elseif vim.api.nvim_eval([[$TERM =~ '^\(xterm\)\(-.*\)\?$']]) == 1 then
-            if vim.api.nvim_eval([[$XTERM_VERSION != '']]) == 1 then
-                opt.termguicolors = true
-            elseif vim.api.nvim_eval([[$KONSOLE_PROFILE_NAME != '']]) == 1 then
-                opt.termguicolors = true
-            elseif vim.api.nvim_eval([[$VTE_VERSION != '']]) == 1 then
-                opt.termguicolors = true
-            else
-                opt.termguicolors = false
-            end
-        end
-    end,
-    once = true
-})
+-- autocmd("UIEnter", {
+--     callback = function()
+--         if vim.api.nvim_eval([[$TERM =~ '^\(rxvt\|screen\|interix\|putty\|win32con\)\(-.*\)\?$']]) == 1 then
+--             opt.termguicolors = false
+--         elseif vim.api.nvim_eval([[$TERM =~ '^\(tmux\|iterm\|vte\|gnome\|vtpcon\|conemu\)\(-.*\)\?$']]) == 1 then
+--             opt.termguicolors = true
+--         elseif vim.api.nvim_eval([[$TERM =~ '^\(xterm\)\(-.*\)\?$']]) == 1 then
+--             if vim.api.nvim_eval([[$XTERM_VERSION != '']]) == 1 then
+--                 opt.termguicolors = true
+--             elseif vim.api.nvim_eval([[$KONSOLE_PROFILE_NAME != '']]) == 1 then
+--                 opt.termguicolors = true
+--             elseif vim.api.nvim_eval([[$VTE_VERSION != '']]) == 1 then
+--                 opt.termguicolors = true
+--             else
+--                 opt.termguicolors = false
+--             end
+--         end
+--     end,
+--     once = true
+-- })
 
 -- Toggle cursor line/column highlight only for the active window
 local nviCursorHighlight = augroup("nviCursorHighlight", {})
