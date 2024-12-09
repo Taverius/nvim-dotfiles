@@ -49,7 +49,9 @@ opt.fileformats = { "unix", "dos", "mac" }  -- File type order
 opt.autochdir = true                        -- Automatically change CWD
 opt.showtabline = 2                         -- Always show tab line
 opt.diffopt:append { "vertical" }           -- Vertical diff by default
-opt.clipboard = "unnamedplus"               -- Clipboard is the + register
+opt.clipboard = { "unnamed", "unnamedplus" }
+                                            -- Clipboard is the + register
+                                            -- Yank/Delete also use the * register
 opt.mouse = "ar"                            -- Full mouse support and damn the hipsters
 opt.mousehide = true                        -- Hide the mouse while typing
                                             -- Should redefine the mouse popup menu to remove the
@@ -89,6 +91,29 @@ opt.titlestring = opt.titlestring:get() .. [[\ -\ %{substitute(expand(v:progname
 opt.titlestring = opt.titlestring:get() .. [[\ -\ %{substitute(getcwd(),\ $HOME,\ '~',\ '')}]]
                                             -- Working directory
 
+-- Force OSC 52 clipboard provider for TUI SSH sessions
+autocmd("UIEnter", {
+    callback = function()
+        if ( not vim.fn.has("gui_running") )
+            and ( not vim.fn.has("clipboard") )
+            and ( vim.env.SSH_TTY ~= nil )
+            and ( vim.env.SSH_TTY ~= "" ) then
+            vim.g.clipboard = {
+                name = 'OSC 52',
+                copy = {
+                    ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+                    ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+                },
+                paste = {
+                    ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+                    ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+                },
+            }
+        end
+    end,
+    once = true
+})
+
 -- Don't screw up folds when inserting text that might affect folds, until leaving insert mode.
 -- Foldmethod is local to the window. Protect against screwing up folding when switching between
 -- windows.
@@ -111,28 +136,6 @@ autocmd({ "InsertLeave", "WinLeave" }, {
         end
     end
 })
-
--- Terminal color checks
--- autocmd("UIEnter", {
---     callback = function()
---         if vim.api.nvim_eval([[$TERM =~ '^\(rxvt\|screen\|interix\|putty\|win32con\)\(-.*\)\?$']]) == 1 then
---             opt.termguicolors = false
---         elseif vim.api.nvim_eval([[$TERM =~ '^\(tmux\|iterm\|vte\|gnome\|vtpcon\|conemu\)\(-.*\)\?$']]) == 1 then
---             opt.termguicolors = true
---         elseif vim.api.nvim_eval([[$TERM =~ '^\(xterm\)\(-.*\)\?$']]) == 1 then
---             if vim.api.nvim_eval([[$XTERM_VERSION != '']]) == 1 then
---                 opt.termguicolors = true
---             elseif vim.api.nvim_eval([[$KONSOLE_PROFILE_NAME != '']]) == 1 then
---                 opt.termguicolors = true
---             elseif vim.api.nvim_eval([[$VTE_VERSION != '']]) == 1 then
---                 opt.termguicolors = true
---             else
---                 opt.termguicolors = false
---             end
---         end
---     end,
---     once = true
--- })
 
 -- Toggle cursor line/column highlight only for the active window
 local nviCursorHighlight = augroup("nviCursorHighlight", {})
