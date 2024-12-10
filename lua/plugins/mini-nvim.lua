@@ -65,6 +65,11 @@ starter.setup({
             action = [[lua require("lazy").sync()]],
             section = "Actions",
         },
+        {
+            name = "Restore Plugins from lockfile",
+            action = [[lua require("lazy").restore()]],
+            section = "Actions",
+        },
         starter.sections.builtin_actions(),
     },
     header = table.concat({
