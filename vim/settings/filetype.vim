@@ -2,17 +2,11 @@
 " vim/settings/filetype.vim @ (c) Leonardo Valeri Manera 2022
 
 " Python
-function! DeleteTrailingWS()
-    if !&binary && &filetype != 'diff'
-        let l:save = winsaveview()
-        keeppatterns %s/\s\+$//e
-        call winrestview(l:save)
-    endif
-endfunction
+" Delete trailing whitespace on save
 augroup nviPython
     autocmd!
-    autocmd BufWritePre,FileWritePre,FileAppendPre,FilterWritePre *.py :call DeleteTrailingWS()
-    autocmd FileType python autocmd BufWritePre <buffer> :call DeleteTrailingWS()
+    autocmd BufWritePre,FileWritePre,FileAppendPre,FilterWritePre *.py :lua MiniTrailspace.trim()
+    autocmd FileType python autocmd BufWritePre <buffer> :lua MiniTrailspace.trim()
 augroup END
 
 " VimL
