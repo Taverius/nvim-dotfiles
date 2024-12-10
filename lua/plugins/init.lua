@@ -1,9 +1,12 @@
 --   vi: tw=100
 -- lua/plugins/init.lua @ Leonardo Valeri Manera 2023
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local opt = vim.opt
+local fn = vim.fn
+
+local lazypath = fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
+    fn.system({
         "git",
         "clone",
         "--filter=blob:none",
@@ -12,7 +15,7 @@ if not vim.loop.fs_stat(lazypath) then
         lazypath,
     })
 end
-vim.opt.rtp:prepend(lazypath)
+opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
     -- Treesitter
@@ -59,7 +62,7 @@ require("lazy").setup({
     -- FZF
     {
         "junegunn/fzf",
-        cond = vim.fn.executable("fzf"),
+        cond = fn.executable("fzf"),
     },
 
     -- Repeat
@@ -80,11 +83,11 @@ require("lazy").setup({
     -- Fuzzy
     {
         "nvim-telescope/telescope-fzf-native.nvim",
-        cond = vim.fn.executable("cmake")
-            or (not vim.fn.has("windows")) and vim.fn.executable("make")
+        cond = fn.executable("cmake")
+            or (not fn.has("windows")) and fn.executable("make")
             or false,
-        build = vim.fn.executable("cmake") and "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release"
-            or (not vim.fn.has("windows")) and vim.fn.executable("make") and "make"
+        build = fn.executable("cmake") and "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release"
+            or (not fn.has("windows")) and fn.executable("make") and "make"
             or nil,
     },
     {
@@ -107,7 +110,7 @@ require("lazy").setup({
             "fcying/telescope-ctags-outline.nvim",
             {
                 "kelly-lin/telescope-ag",
-                cond = vim.fn.executable("ag"),
+                cond = fn.executable("ag"),
             },
             "tom-anders/telescope-vim-bookmarks.nvim",
         },
@@ -253,7 +256,7 @@ require("lazy").setup({
     -- Options
     dev = {
         -- where the dev plugin path is
-        path = vim.fn.stdpath("data") .. "/dev",
+        path = fn.stdpath("data") .. "/dev",
     },
     checker = {
             -- check for updates automatically

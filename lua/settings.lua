@@ -92,27 +92,31 @@ opt.titlestring = opt.titlestring:get() .. [[\ -\ %{substitute(getcwd(),\ $HOME,
                                             -- Working directory
 
 -- Force OSC 52 clipboard provider for TUI SSH sessions
-autocmd("UIEnter", {
-    callback = function()
-        if ( not vim.fn.has("gui_running") )
-            and ( not vim.fn.has("clipboard") )
-            and ( vim.env.SSH_TTY ~= nil )
-            and ( vim.env.SSH_TTY ~= "" ) then
-            vim.g.clipboard = {
-                name = 'OSC 52',
-                copy = {
-                    ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
-                    ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
-                },
-                paste = {
-                    ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
-                    ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
-                },
-            }
-        end
-    end,
-    once = true
-})
+-- autocmd("UIEnter", {
+--   callback = function()
+--     print("UIEnter Check:")
+--     print("GUI Running: " .. (fn.has("gui_running") and "yes" or "no"))
+--     print("Clipboard provider: " .. (fn.has("clipboard") and "yes" or "no"))
+--     print("g:clipboard is set: " .. (g.clipboard or "no"))
+--     print([['clipboard': "]] .. vim.o.clipboard .. [["]])
+--     print([[$SSH_TTY: ]] .. (vim.env.SSH_TTY or "nil"))
+--     print("\n")
+--     if ( vim.env.SSH_TTY ~= nil ) and ( vim.env.SSH_TTY ~= "" ) then
+--       g.clipboard = {
+--         name = 'OSC 52',
+--         copy = {
+--           ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+--           ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+--         },
+--         paste = {
+--           ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+--           ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+--         },
+--       }
+--     end
+--   end,
+--   once = true
+-- })
 
 -- Don't screw up folds when inserting text that might affect folds, until leaving insert mode.
 -- Foldmethod is local to the window. Protect against screwing up folding when switching between
