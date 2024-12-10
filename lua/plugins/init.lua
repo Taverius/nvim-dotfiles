@@ -61,6 +61,9 @@ require("lazy").setup({
         version = '^1.0.0',
         cmd = "ASToggle",
         event = { "BufLeave", "FocusLost", "InsertLeave", "TextChanged" },
+        opts = {
+            debounce_delay = 5,
+        },
     },
 
     -- FZF
