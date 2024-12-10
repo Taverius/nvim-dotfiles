@@ -242,6 +242,7 @@ require("lazy").setup({
     "sheerun/vim-polyglot",
     "k-takata/vim-nsis",
     "cmcaine/vim-uci",
+    "dmix/elvish.vim",
     "elkasztano/nushell-syntax-vim",
     { "Taverius/starsector-ft.vim", dev = false },
 
