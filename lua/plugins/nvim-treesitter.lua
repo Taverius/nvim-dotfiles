@@ -1,6 +1,7 @@
 --   vi: tw=100
 -- lua/plugins/nvim-treesitter.lua @ Leonardo Valeri Manera 2022
 
+require 'nvim-treesitter.install'.prefer_git = false
 require('nvim-treesitter.configs').setup {
     ensure_installed = {
         "bash",
