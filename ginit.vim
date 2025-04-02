@@ -2,7 +2,7 @@
 " ginit.vim @ (c) Leonardo Valeri Manera 2022
 
 set guioptions-=Te      " Remove the toolbar and gui tab-bar
-set guioptions+=d       " Dark mode
+" set guioptions+=d       " Dark mode
 
 " Set window size
 set lines=999
